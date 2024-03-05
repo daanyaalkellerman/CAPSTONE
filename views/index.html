@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPSTONE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    
+    <h2 class="text-center ">Routes, methods and descriptions</h2>
+    <table class="table table-secondary" style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+        <thead>
+          <tr>
+            <th scope="col" colspan="2">Routes</th>
+            <th scope="col" colspan="2">Method</th>
+            <th scope="col" colspan="2">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="5" class="text-center">Users</th>
+            </tr>
+          <tr>
+            <td colspan="2">/</td>
+            <td colspan="2">GET</td>
+            <td colspan="2">Current page</td>
+          </tr>
+          <tr>
+            <td colspan="2">/users</td>
+            <td colspan="2">GET</td>
+            <td colspan="2">Retrieve all users' data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/users/:userID</td>
+            <td colspan="2">GET</td>
+            <td colspan="2">Retrieve a single user's data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/users/:userID</td>
+            <td colspan="2">PATCH</td>
+            <td colspan="2">Update a user's data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/users/:userID</td>
+            <td colspan="2">DELETE</td>
+            <td colspan="2">Delete a user's data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/users</td>
+            <td colspan="2">POST</td>
+            <td colspan="2">Add a user</td>
+          </tr>
+            <th colspan="5" class="text-center">Products</th>
+          </tr>
+          <tr>
+            <td colspan="2">/products</td>
+            <td colspan="2">GET</td>
+            <td colspan="2">Fetch all products from database</td>
+          </tr>
+          <tr>
+            <td colspan="2">/products/:prodID</td>
+            <td colspan="2">GET</td>
+            <td colspan="2">Fetch a single product's data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/products/:prodID</td>
+            <td colspan="2">PATCH</td>
+            <td colspan="2">Update a product's data</td>
+          </tr>
+          <tr>
+            <td colspan="2">/products/:prodID</td>
+            <td colspan="2">DELETE</td>
+            <td colspan="2">Delete a product</td>
+          </tr>
+          <tr>
+            <td colspan="2">/products</td>
+            <td colspan="2">POST</td>
+            <td colspan="2">Add a product</td>
+          </tr>
+        </tr>
+        <th colspan="5" class="text-center">Login</th>
+      </tr>
+      <tr>
+        <td colspan="2">/login</td>
+        <td colspan="2">POST</td>
+        <td colspan="2">Logs in the user</td>
+      </tr>
+        </tbody>
+      </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
