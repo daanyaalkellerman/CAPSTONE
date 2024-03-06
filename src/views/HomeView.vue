@@ -52,7 +52,7 @@
                  </div>
                </div>
             </div>
-            <button class="viewM">VIEW MORE>>></button>
+            <button class="viewM"><router-link to="/products" class="nav-link">VIEW MORE>>></router-link></button>
             </section>
     </body>
 </template>
@@ -174,6 +174,7 @@ height: auto;
     border-radius: 20px;
     color: white;
     font-size: 20px;
+    
   }
   .viewM:hover{
     margin:5.65%;

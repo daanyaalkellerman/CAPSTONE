@@ -353,7 +353,7 @@ place-items:center;
 }
 
 .search-box {
-  max-width: 200px;
+  max-width: 300px;
   min-width:  100px;
   height: 35px;
   border: 1px solid lightblue;
