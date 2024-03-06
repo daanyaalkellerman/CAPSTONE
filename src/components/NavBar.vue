@@ -14,6 +14,9 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
+                <router-link to="/profile" class="nav-link">Profile</router-link>
+              </li>
+            <li class="nav-item">
                 <router-link to="/login" class="nav-link">Login</router-link>
               </li>
             <li class="nav-item">
