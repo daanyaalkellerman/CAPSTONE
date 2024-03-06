@@ -208,7 +208,7 @@ img{
       }
   
       .table tr{
-        background: black;
+        background: #5889B0;
         margin-bottom: 20px !important;
 
       }

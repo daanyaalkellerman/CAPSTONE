@@ -35,10 +35,6 @@
                 <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
           </ul>
-          <form class="d-flex mt-3" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
         </div>
       </div>
     </div>
@@ -63,9 +59,17 @@ export default {
     text-align: center;
     background-color: #040B13;
       opacity: 85%;
+      text-align: left;
+  }
+  .nav-link{
+    margin-top: 10px;
+  }
+  .offcanvas{
+    width: 300px;
   }
 .offcanvas-body{
     background-color: #040B13;
+    width: 300px;
 }
 .offcanvas-header{
     background-color: #040B13;
