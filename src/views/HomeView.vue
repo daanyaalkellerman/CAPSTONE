@@ -175,6 +175,17 @@ height: auto;
     color: white;
     font-size: 20px;
   }
+  .viewM:hover{
+    margin:5.65%;
+    height:90px;
+    width:250px;
+    background-color: #5889B0;
+    border: 3px solid #1D2024;
+    border-radius: 15px;
+    color: black;
+    font-size: 25px;
+    transition: 0.95s;
+  }
   @media screen and (max-width: 480px) and (min-width: 400px) {
     .headNexa{
       font-size: 55px;}

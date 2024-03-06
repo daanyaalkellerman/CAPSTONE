@@ -3,16 +3,29 @@
     <div class="footNexa">
 
         <div>
-            <img src="" alt="">
-            <p>words words words</p>
+            <img class="driveLogo"  src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png" alt="">
         </div>
         <div>
-            <h2>Links</h2>
-            <p>words words words</p>
+            <h3 class="footH">Links</h3>
+            <router-link to="/home" class="nav-link">Home</router-link>
+            <router-link to="/about" class="nav-link">About</router-link>
+            <router-link to="/contact" class="nav-link">Contact</router-link>
+           <br><br>
         </div>
         <div>
-            <h2>Follow Us</h2>
-            <p>icon icon icon</p>
+            <h3 class="footH">Follow Us</h3>
+            <ul class="nav" id="icons">
+              <li class="ms-3">
+                  <a class="icon"href="https://instagram.com/daanyaalkellerman/" target="_blank"><i class="fa fa-instagram"></i></a>
+                </li>
+                <li class="ms-3">
+                  <a class="icon" href="https://github.com/daanyaalkellerman" target="_blank"><i class="fa fa-github"></i></a>
+                </li>
+                <li class="ms-3">
+                  <a class="icon"  href="https://youtube.com/@daanyaalkellerman" target="_blank"><i class="fa fa-youtube-play"></i></a>
+                </li>
+            </ul>
+            <br><br>
         </div>
     </div>
 <p class="copyNexa">Copy right thing</p>
@@ -24,20 +37,54 @@ export default {
 }
 </script>
 <style scoped>
+.driveLogo{
+    width: 120px;
+}
+.fa{
+  color:white;
+}
     .footNexa{
     color: #fff;
     border-top: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 400px;
     padding: 1rem ;
     background-color: #040B13;
+    
   }
   .copyNexa{
     color: #fff;
     text-align: center;
     margin: 0;
     background-color: #040B13;
+  }
+  @media (max-width:1024px) {
+    .footNexa{
+      gap:200px;
+    }
+  }
+  @media (min-width:480px) and (max-width:786px){
+    .footNexa{
+      gap:80px;
+    }
+  }
+  @media (min-width:300px) and (max-width:480px){
+    .footNexa{
+      gap:40px;
+    }
+    .footH{
+      font-size: 16px
+    }
+    .nav-link{
+      font-size: 13px;
+    }
+    .fa{
+     font-size: 15px;
+    }
+    .driveLogo{
+    width: 90px;
+}
   }
 </style>
