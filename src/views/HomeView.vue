@@ -267,8 +267,5 @@ height: auto;
     gap: 37px;
     margin-top: 6%;
   }
-    .footNexa{
-      gap: 30px;
-    }
   }
 </style>
