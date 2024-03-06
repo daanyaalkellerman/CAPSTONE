@@ -6,7 +6,7 @@ const getUsers = async () => {
     return result;
 }
 
-const getUser = async()=>{
+const getUser = async(userID)=>{
     const [result] = await pool.query(`
     SELECT * FROM Users WHERE userID = ?
     `,[userID])
@@ -18,11 +18,11 @@ const addUser = async(firstName,lastName,userUrl,userAge,emailAdd,userRole,userP
     `,[firstName,lastName,userUrl,userAge,emailAdd,userRole,userPass])
     return result
 }
-const editUser = async(firstName,lastName,userUrl,userAge,emailAdd,userRole,userPass)=>{
-    const [result] = await pool.query(`
+const editUser = async(userID,firstName,lastName,userUrl,userAge,emailAdd,userRole,userPass)=>{
+    const [user] = await pool.query(`
     UPDATE Users SET firstName = ?,lastName = ?,userUrl = ?, userAge = ?,emailAdd = ?,userRole = ?, userPass = ? WHERE (userID = ?)
     `,[firstName,lastName,userUrl,userAge,emailAdd,userRole,userPass,userID])
-    return result
+    return getUsers(user)
 }
 const deleteUser = async(userID)=>{
     const [user] = await pool.query(`
