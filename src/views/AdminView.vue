@@ -49,7 +49,7 @@
             </div>
             </div>
         <!-- USER TABLE -->
-        <div class="container">
+        <div class="container" v-if="user">
             <div class="row">
               <div class="col">
                 <div class="table crud-table">
@@ -65,12 +65,12 @@
                       </tr>
                     </thead>
                     <tbody class="">
-                      <tr>
-                        <td data-label="First Name">Daanyaal</td>
-                        <td data-label="Last Name">Kellerman</td>
-                        <td data-label="Email">Kellermandaanyaal2@gmail.com</td>
-                        <td data-label="Role">Admin</td>
-                        <td data-label="Image"><img src="https://i.postimg.cc/66gMXvhq/tablet-2560x1700.jpg" alt=""></td>
+                      <tr v-for="user in users" :key="user">
+                        <td data-label="First Name">{{user.firstName}}</td>
+                        <td data-label="Last Name">{{user.lastName}}</td>
+                        <td data-label="Email">{{user.emailAdd}}</td>
+                        <td data-label="Role">{{user.userRole}}</td>
+                        <td data-label="Image"><img :src = user.userUrl alt=""></td>
                         <td data-label="Edit"><button class="editBtn">Edit</button><button class="delBtn">Del</button></td>
                       </tr>
                     </tbody>
@@ -79,12 +79,15 @@
               </div>
             </div>
           </div>
+          <div v-else>
+            <SpinnerView/>
+          </div>
           <!-- PRODUCT TABLE -->
           <div>
             <h2 class="tableTop">Products</h2>
-            <button type="button" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+            <button type="button" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add Product</button>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -167,9 +170,36 @@
 </body>
 </template>
 <script>
+import SpinnerView from '../components/SpinnerView.vue';
 export default {
-    
-}
+  data() {
+    return {
+      userID:null,
+      userRole:null,
+      firstName:null,
+      lastName:null,
+      email:null,
+      image:null,
+      userPass:null,
+      user:null,
+      prodName:null,
+      prodDes:null,
+      price:null,
+      category:null
+    }
+  },
+    components:{
+      SpinnerView
+    },
+    computed:{
+      getUsers() {
+        return this.$store.state.users
+      }
+    },
+ 
+    }
+
+
 </script>
 <style scoped>
 .tableTop{
