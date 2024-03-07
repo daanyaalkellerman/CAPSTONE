@@ -1,8 +1,12 @@
 <template lang="">
  <body class="bodBack">
     <section class="productNexa">
-        <h1 class="productH">PRODUCTS</h1>
-        <div class="search">
+       
+
+</section>
+    <section>
+      <h1 class="productH">PRODUCTS</h1>
+      <div class="search">
   <div class="search-box">
     <div class="search-field">
       <input placeholder="Search..." class="input" type="text">
@@ -16,9 +20,7 @@
     </div>
   </div>
 </div>
-    </section>
-    <section>
-        <div class="container cardsb">
+        <div class="container-fluid cardsb">
             <div class="card1">
                 <div class="image"><img src="https://i.postimg.cc/L6jjvP5z/1400128763.jpg" alt="" id="img"></div>
                  <div class="content">
@@ -236,8 +238,7 @@
                        Car this
                      </span>    
                    <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
+                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae dolores, possimus pariatur animi temporibus nesciunt praesentium 
                    </p>
                <p class="action">
                 R159 999
@@ -324,18 +325,22 @@ height: auto;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 37px;
-    margin-top: 6%;
+    gap: 30px;
+    padding: 2rem;
+   
   }
 .productH{
     color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
    .productNexa{
 
 min-height: 93vh;
 /* display: grid;
 place-items: center; */
-padding: 5rem;
+padding-top: 5rem;
 
 background-image: url(https://i.postimg.cc/sXdFm9zm/Upscales-ai-1709709872875.webp);
 background-size: cover;
@@ -347,18 +352,19 @@ border-image: fill 1 linear-gradient(#040B13, rgba(0, 0, 0, 0.066));
 
 }
 .search {
+  margin-top: 30px;
 color: black;
 display:grid;
 place-items:center;
 }
 
 .search-box {
-  max-width: 300px;
+  max-width: 400px;
   min-width:  100px;
   height: 35px;
   border: 1px solid lightblue;
   border-radius: 0px;
-  padding: 5px 15px;
+  padding: 5px 10px ;
   background: #D9D9D9;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
@@ -372,7 +378,7 @@ place-items:center;
   position: relative;
   width: 100%;
   height: 100%;
-  left: -5px;
+  left: -10px;
   border: 0;
 }
 
@@ -394,17 +400,17 @@ place-items:center;
 }
 /*Search button*/
 .search-box-icon {
-  width: 52px;
+  width: 60px;
   height: 35px;
   position: absolute;
   top: -6px;
-  right: -21px;
+  right: -35px;
   background: transparent;
   color:black;
 }
 
 .btn-icon-content {
-  width: 52px;
+  width: 46px;
   height: 35px;
   top: -6px;
   right: -21px;
@@ -423,8 +429,8 @@ place-items:center;
   width: 21px;
   height: 21px;
   position: absolute;
-  top: 7px;
-  right: 15px;
+  top: 6px;
+  right: 19px;
   color:black;
 }
 @media (max-width:400px) {

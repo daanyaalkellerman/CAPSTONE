@@ -58,7 +58,6 @@ export default {
     cursor: default !important;
 }
 
-.single{
-}
+
 
 </style>
