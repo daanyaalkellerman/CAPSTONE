@@ -4,10 +4,28 @@
         
         <div class="contact">
         <div class="info">
-            <h3>CONTACT US</h3>
+            <h3 class="infoH">CONTACT US</h3>
+           <p>Inquiries</p>
         </div>
         <form class="form">
-                
+ <div class="group">
+  <input required="" type="text" class="input">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>FullName</label>
+</div>
+<div class="group">
+  <input required="" type="text" class="input">
+  <span class="highlight"></span>
+  <span class="bar"></span>
+  <label>Email</label>
+</div>
+<div class="group">
+    <p class="text-secondary msg">Leave a Message</p>
+  <textarea required type="text" class="inputM" data-label-message>
+
+  </textarea>
+</div>
         </form>
         </div>
     </section>
@@ -22,17 +40,136 @@ export default {
 .contact{
     display: flex;
     justify-content: center;
-    width:900px;
+    width:700px;
     height:60vh;
 }
+.msg{
+    text-align: left;
+    padding: 5px;
+}
 .info{
-    width:40%;
+    width:50%;
     text-align:center;
-    background-color:#040B13
+    background-color:#040B13;
+    border: 1px solid white;
+}
+.infoH{
+    font-size: 20px;
+    padding-top: 10px;
 }
 .form{
-    width:60%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    background-color: white;
+    border: 2px solid #040B13;
 }
+.group {
+ position: relative;
+
+}
+.inputM{
+    font-size: 16px;
+ padding: 10px 10px 10px 5px;
+ display: block;
+ width: 400px;
+ height: 130px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+
+.input {
+ font-size: 16px;
+ padding: 10px 10px 10px 5px;
+ display: block;
+ width: 400px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+
+.input:focus {
+ outline: none;
+}
+
+label {
+ color: #999;
+ font-size: 18px;
+ font-weight: normal;
+ position: absolute;
+ pointer-events: none;
+ left: 5px;
+ top: 10px;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+ top: -20px;
+ font-size: 14px;
+ color: #5264AE;
+}
+
+.bar {
+ position: relative;
+ display: block;
+ width: 200px;
+}
+
+.bar:before, .bar:after {
+ content: '';
+ height: 2px;
+ width: 0;
+ bottom: 1px;
+ position: absolute;
+ background: #5264AE;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+ left: 50%;
+}
+
+.bar:after {
+ right: 50%;
+}
+
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+ width: 50%;
+}
+
+.highlight {
+ position: absolute;
+ height: 60%;
+ width: 100px;
+ top: 25%;
+ left: 0;
+ pointer-events: none;
+ opacity: 0.5;
+}
+
+.input:focus ~ .highlight {
+ animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+ from {
+  background: #5264AE;
+ }
+
+ to {
+  width: 0;
+  background: transparent;
+ }
+}
+
 .contactNexa{
     min-height: 100vh;
     display: grid;
@@ -52,5 +189,113 @@ export default {
     background-color: #040B13;
     width: auto;
     color: white;
+}
+@media (min-width: 720px) and (max-width:1080px) {
+    .contact{
+        width:600px;
+        height:50%;
+    }
+    .info{
+        width: 50%px;
+    }
+    .form{
+        gap:40px
+    }
+    .input {
+ font-size: 13px;
+ padding: 9px 9px 9px 5px;
+ display: block;
+ width: 350px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+.inputM{
+    height: 80px;
+    width:350px
+}
+}
+@media (min-width:600px) and (max-width:720px) {
+    .contact{
+        width:600px;
+        height:50%;
+    }
+    .info{
+        width: 50%;
+    }
+    .form{
+        gap:40px
+    }
+    .input {
+ font-size: 13px;
+ padding: 9px 9px 9px 5px;
+ display: block;
+ width: 350px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+.inputM{
+    height: 80px;
+    width:350px
+}
+}
+@media (min-width:300px) and (max-width:600px) {
+
+     .contact{
+        width:100%;
+        height:40%;
+    }
+    .info{
+        width: 80%;
+    }
+    .form{
+        gap:20px;
+        width:80%;
+    }
+    .input {
+ font-size: 13px;
+ padding: 9px 9px 9px 5px;
+ display: block;
+ width: 200px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+.inputM{
+    height: 80px;
+    width:100%;
+}
+label {
+ color: #999;
+ font-size: 10px;
+ font-weight: normal;
+ position: absolute;
+ pointer-events: none;
+ left: 5px;
+ top: 20px;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+ top: -1px;
+ font-size: 10px;
+ color: #5264AE;
+}
+.msg{
+    text-align: left;
+    padding: 5px;
+    font-size: 10px;
+}
+.info{
+    padding-top: 20px;
+    width: 60%;
+}
+.infoH{
+
+    font-size: 12px;
+}
 }
 </style>
