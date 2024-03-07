@@ -64,7 +64,7 @@ export default {
     justify-content: center;
     align-items: center;
     gap: 60px;
-    background-color: white;
+    background-color: rgba(255, 255, 255,0.86);
     border: 2px solid #040B13;
 }
 .group {
@@ -176,13 +176,13 @@ label {
     place-items: center; 
     padding: 0;
 
-    background-image: url(https://i.postimg.cc/vBsW0q9g/Upscales-ai-1709458709523.webp);
+    background-image: url(https://i.postimg.cc/3JgzFSXC/0062963d91d65b0743ea5f1b771d6e68.jpg);
     background-size: cover;
     background-position: center;
  
   
     text-align: center;
-    border-image: fill 1 linear-gradient(#040B13, rgba(0, 0, 0, 0.067));
+    border-image: fill 1 linear-gradient(#040B13, rgba(0, 0, 0, 0.011));
     
 }
 .bodBack{

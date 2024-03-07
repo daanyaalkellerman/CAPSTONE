@@ -5,7 +5,7 @@
           <span class="navbar-toggler-icon"></span>
         </button> 
         <span class="name animate__animated animate__backInDown"><img class="driveLogo" src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png"></span>
-        <i class="fa-solid fa-cart-shopping pe-4" id="cart"></i>
+       <router-link to="/cart"> <i class="fa-solid fa-cart-shopping pe-4" id="cart"></i></router-link>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>

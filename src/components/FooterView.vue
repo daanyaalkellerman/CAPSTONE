@@ -28,12 +28,16 @@
             <br><br>
         </div>
     </div>
-<p class="copyNexa">Copy right thing</p>
+<p class="copyNexa">Drive Nexa&copy{{currYear}}</p>
 </footer>
 </template>
 <script>
 export default {
-    
+    data(){
+      return{
+        currYear: new Date().getFullYear()
+      }
+    }
 }
 </script>
 <style scoped>
