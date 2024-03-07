@@ -34,6 +34,9 @@
             <li class="nav-item">
                 <router-link to="/admin" class="nav-link">Admin</router-link>
             </li>
+            <li class="nav-item">
+                <router-link to="/single" class="nav-link">Single</router-link>
+            </li>
           </ul>
         </div>
       </div>
