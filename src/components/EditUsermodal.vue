@@ -41,7 +41,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-              <button  @click="this.$store.dispatch('editUser', edit)" class="btn btn-dark"><span id="logs">Update User</span></button>
+              <button  @click="this.$store.dispatch('editUser', user)" class="btn btn-dark"><span id="logs">Update User</span></button>
             </div>
         
         </form>
