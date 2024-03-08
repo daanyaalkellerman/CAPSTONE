@@ -3,57 +3,14 @@
       <section class="adminNexa">
         <div>
             <h2 class="tableTop">Users</h2>
-            <button type="button" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Add User</button>
+          <AddModel/>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setTimeout()"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- @submit.prevent="addUser" -->
-                  <form  method="POST" class="mx-4 my-5"> 
-                        <div class="row">
-                <div class="col">
-                    <p>FirstName</p>
-                  <input type="text" class="form-control" v-model="firstName" name="firstName"  aria-label="First name" required="">
-                </div>
-              </div>
-                <div class="row">
-                  <div class="col">
-                      <p>LastName</p>
-                    <input type="text" class="form-control" v-model="lastName" name="lastName" aria-label="Last name" required="">
-                  </div>
-                </div>
-              <div class="row">
-                <div class="col">
-                    <p>Email</p>
-                  <input type="text" class="form-control" v-model="email" name="userEmail"  aria-label="First name" required="">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <p>Password</p>
-                  <input type="password" class="form-control"  v-model="userPass" name="userPass" aria-label="Last name" required="">
-                </div>
-              </div>
-              <div class="modal-footer">
-              <button type="submit" class="btn btn-dark"><span id="logs">Create User</span></button>
-            </div>
-        
-        </form>
-                </div> 
-            </div>
-            </div>
-            </div>
         <!-- USER TABLE -->
-        <div class="container" v-if="user">
+        <div class="container" >
             <div class="row">
               <div class="col">
                 <div class="table crud-table">
-                  <table class="table align-middle container-sm table-bordered">
+                  <table class="table align-middle container-sm table-bordered" >
                     <thead class="thead">
                       <tr>
                         <th>First Name</th>
@@ -64,24 +21,25 @@
                         <th>Edit</th>
                       </tr>
                     </thead>
-                    <tbody class="">
-                      <tr v-for="user in users" :key="user">
+                    <tbody v-if="Users">
+                      <tr v-for="user in $store.state.Users" :key="user.userID">
                         <td data-label="First Name">{{user.firstName}}</td>
                         <td data-label="Last Name">{{user.lastName}}</td>
                         <td data-label="Email">{{user.emailAdd}}</td>
                         <td data-label="Role">{{user.userRole}}</td>
-                        <td data-label="Image"><img :src = user.userUrl alt=""></td>
-                        <td data-label="Edit"><button class="editBtn">Edit</button><button class="delBtn">Del</button></td>
+                        <td data-label="Image"><img :src=user.userUrl alt=""></td>
+                        <td data-label="Edit"><EditModel/><button class="delBtn">Del</button></td>
                       </tr>
+                    </tbody>
+                    <tbody v-else>
+            <SpinnerView/>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
-          <div v-else>
-            <SpinnerView/>
-          </div>
+          
           <!-- PRODUCT TABLE -->
           <div>
             <h2 class="tableTop">Products</h2>
@@ -171,6 +129,8 @@
 </template>
 <script>
 import SpinnerView from '../components/SpinnerView.vue';
+import AddModel from '../components/AddUsermodel.vue';
+import EditModel from '../components/EditUsermodal';
 export default {
   data() {
     return {
@@ -188,13 +148,19 @@ export default {
       category:null
     }
   },
+  methods: {
+   
+  },
     components:{
-      SpinnerView
+      SpinnerView,AddModel,EditModel
     },
     computed:{
-      getUsers() {
-        return this.$store.state.users
+      Users(){
+       return this.$store.state.Users
       }
+    },
+    mounted() {
+      this.$store.dispatch('getUsers')
     },
  
     }
@@ -248,56 +214,7 @@ img{
    border: 1px solid black;
   }
   
-  .modal-content{
-    background: white;
-  }
-  .modal-body p{
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    color: black;
-  }
-  
-  .modal-body input{
-      width: 100%;
-      margin-bottom: 20px;
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid black;
-      outline: none;
-      height: 40px;
-      color: black;
-  
-  }
-  .modal-body textarea{
-    justify-content: end;
-    width: 100%;
-      margin-bottom: 20px;
-      background-color: transparent;
-      border: none;
-      border-bottom: 1px solid white;
-      outline: none;
-      height: 40px;
-      color: black;
-    height: 150px;
-  }
-
-  .modal-body form input{
-    border-radius: 0px;
-  }
-  
-  .modal-header{
-    color: black;
-    border-bottom: 0px;
-  }
-  
-  .modal-footer{
-    border-top: 0px;
-  }
-  
-  .btn-close{
-    background-color: black;
-  }
+ 
   @media (min-width:600px) and (max-width:780px){
     .table{
         margin-left: 0;
