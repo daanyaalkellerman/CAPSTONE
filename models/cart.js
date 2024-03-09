@@ -13,10 +13,10 @@ const getCart = async(cartID)=>{
     return item 
 }
 const editQuan = async(cartID,quantity)=>{
-    const [quantity] = await pool.query(`
+    const [quan] = await pool.query(`
     UPDATE Cart SET quantity = ?  WHERE (cartID = ?)
     `,[quantity,cartID])
-    return getCarts(quantity)
+    return getCarts(quan)
 }
 
 const deleteCart = async(cartID)=>{
