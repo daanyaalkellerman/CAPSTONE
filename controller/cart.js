@@ -1,4 +1,4 @@
-import { getCarts,getCart,editQuan,deleteCart } from "../models/cart";
+import { getCarts,getCart,editQuan,deleteCart } from "../models/cart.js";
 
 export default {
     getCarts: async (req,res)=>{
