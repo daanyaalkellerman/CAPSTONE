@@ -8,7 +8,7 @@ const loggedUser  = async (req,res,next)=>{
     bcrypt.compare(userPass,cryptedPassword,(err,result)=>{
         if(err) throw err
         if(result === true){
-            const tokenSign = jwt.sign({emailAdd:emailAdd},process.env.SECRET_KEY,{expiresIn:'6m'})
+            const tokenSign = jwt.sign({emailAdd:emailAdd},process.env.SECRET_KEY,{expiresIn:'6h'})
             res.cookie('jwt',tokenSign,{httpOnly:false})
             res.send({
                 tokenSign:tokenSign,

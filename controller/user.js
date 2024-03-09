@@ -7,7 +7,7 @@ export default {
         }catch(e){
             res.status(404).json({
                 status: 404,
-                msg:'Cannot get users'
+                msg:'Error when retrieving users'
             })
         }
     },
@@ -27,7 +27,7 @@ export default {
         }catch(e){
             res.status(404).json({
                 status:404,
-                msg:'Unable to add a user'
+                msg:'Error when adding a user'
             })
         }
     },
@@ -53,7 +53,7 @@ export default {
     },
     deleteUser:async (req,res)=>{
         try{
-            res.send(await deleteUser(req.params.userID))
+            res.send(await deleteUser(+req.params.userID))
         }catch(e){
             res.status(404).json({
                 status:404,
