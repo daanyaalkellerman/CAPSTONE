@@ -11,3 +11,5 @@ router.route('/:cartID')
 .get(cartControl.getCart)
 .patch(cartControl.editQuan)
 .delete(cartControl.deleteCart)
+
+export default router
