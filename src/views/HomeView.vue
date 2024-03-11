@@ -5,6 +5,7 @@
     </section>
     <section class="secNexa">
         <h1>FEATURED PRODUCTS</h1>
+        
         <div class="container cardsb">
             <div class="card1">
                 <div class="image"><img src="https://i.postimg.cc/L6jjvP5z/1400128763.jpg" alt="" id="img"></div>
