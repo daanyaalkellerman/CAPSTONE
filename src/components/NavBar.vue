@@ -17,7 +17,7 @@
                 <router-link to="/profile" class="nav-link">Profile</router-link>
               </li>
             <li class="nav-item">
-                <router-link to="/" class="nav-link">Login</router-link>
+                <router-link v-if="!$cookies.get('jwt')" to="/" class="nav-link">Login</router-link>
               </li>
             <li class="nav-item">
                 <router-link to="/home" class="nav-link">Home</router-link>
@@ -39,13 +39,21 @@
             </li>
           </ul>
         </div>
+        <div class="offcanvas-bottom">
+          <button v-if="$cookies.get('jwt')" @click="logout" ></button>
+
+        </div>
       </div>
     </div>
   </nav>
 </template>
 <script>
 export default {
-    
+    computed: {
+      logout(){
+        this.$store.dispatch('logout')
+      }
+    },
 }
 </script>
 <style scoped>

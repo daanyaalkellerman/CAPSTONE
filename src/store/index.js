@@ -1,12 +1,16 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
+import router from '@/router';
+// axios.defaults.withCredentials = true
 const url = 'https://drive-nexa.onrender.com';
+
 export default createStore({
   state: {
     Products:[],
     Users: [],
     User:[],
-    cart:[]
+    cart:[],
+    loggedIn:false
   },
   getters: {
   },
@@ -19,6 +23,9 @@ export default createStore({
     },
     setUser(state, data){
       state.User = data
+    },
+    setLoggedUser(state, data){
+      state.loggedIn = data
     }
   },
   actions: {
@@ -28,7 +35,6 @@ export default createStore({
     },
     async getUser({commit},userID){
       let res = (await axios.get(`${url}/users/`)).data
-      console.log(res);
       commit('setUser',res)
     },
      deleteUser ({commit},userID){
@@ -37,7 +43,7 @@ export default createStore({
       window.location.reload()
     },
     async createUser ({commit},newUser){
-      let {data} = await axios.post(url + '/users',newUser)
+      let {data} = await axios.post(url + '/users', newUser)
       alert(data.msg)
       window.location.reload()
     },
@@ -47,7 +53,6 @@ export default createStore({
     },
     async getProducts({commit}){
       let res = (await axios.get(`${url}/products`)).data
-      console.log(res);
         commit('setProducts',res)
     },
     async createProd({commit}, newProd){
@@ -63,6 +68,18 @@ export default createStore({
     async deleteProd({commit},prodID){
       axios.delete(`${url}/products/${prodID}`)
       alert('Click Ok to finalize deletion')
+      window.location.reload()
+    },
+    async login({commit},logged){
+      let {data} = await axios.post(url+'/login',logged)
+      $cookies.set('jwt',data.tokenSign)
+      alert('Logged in')
+      await router.push('/home')
+      window.location.reload()
+    },
+    async logout(context){
+      let cookies = $cookies.keys()
+      $cookies.remove('jwt')
       window.location.reload()
     }
   },

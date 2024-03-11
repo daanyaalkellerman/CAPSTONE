@@ -1,23 +1,57 @@
 <template lang="">
     <body class="bodBack">
-      <section class="signup">
-        <form class="form">
+      <!-- <section class="signup">
+        <form @submit.prevent="signin" class="form">
             <span class="title">Register</span>
             <label for="firstname" class="label">First Name</label>
-            <input type="text" id="firstname" name="firstname" required="" class="input">
+            <input type="text" id="firstname" name="firstname" v-model="firstName" required="" class="input">
             <label for="firstname" class="label">Last Name</label>
-            <input type="text" id="lastname" name="lastname" required="" class="input">
+            <input type="text" id="lastname" name="lastname" required="" v-model="lastName" class="input">
+            <label for="age" class="label">Age</label>
+            <input type="text" id="age" name="age" required="" v-model="userAge" class="input">
             <label for="email" class="label">Email</label>
-            <input type="email" id="email" name="email" required="" class="input">
+            <input type="email" id="email" name="email" required="" v-model="emailAdd" class="input">
             <label for="password" class="label">Password</label>
-            <input type="password" id="password" name="password" required="" class="input">
-            <button type="submit" class="submit">Register</button>
+            <input type="password" id="password" name="password" required="" v-model="userPass" class="input">
+            <button @click="signin" class="send">Register</button>
+          </form>
+    </section> -->
+      <section class="signup">
+        <form @submit.prevent='login' class="form" action="">
+            <span class="title">Login</span>
+            <label for="email" class="label">Email</label>
+            <input type="email" id="email" name="email" required="" v-model="emailAdd" class="input">
+            <label for="password" class="label">Password</label>
+            <input type="password" id="password" name="password" required="" v-model="userPass" class="input">
+            <button @click="login" class="send">Register</button>
           </form>
     </section>
 </body>
 </template>
 <script>
 export default {
+  data(){
+    return{
+      emailAdd:null,
+      userPass:null
+        // firstName:null,
+        // lastName:null,
+        // emailAdd:null,
+        // userUrl:'',
+        // userRole:'',
+        // userPass:null,
+        // userAge: null
+    }
+  },
+  computed:{
+    login(){
+      this.$store.dispatch('login',this.$data)
+    },
+    signin(){
+      this.$store.dispatch('createUser', this.$data)
+
+    }
+  }
     
 }
 </script>
@@ -91,7 +125,7 @@ export default {
     border: 1px solid rgba(14, 14, 14, 0.205);
   }
   
-  .submit {
+  .send {
     background-color: #040B13;
     color: #fff;
     border: none;
@@ -101,7 +135,7 @@ export default {
     cursor: pointer;
     transition: all 0.2s ease-in-out;
   }
-  .submit:hover{
+  .send:hover{
     background-color: #5889B0;
     color:#040B13 ;
   }
