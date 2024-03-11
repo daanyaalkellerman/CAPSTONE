@@ -5,9 +5,9 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setTimeout()"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" v-for="user in $store.state.Users" :key="user.userID">
+                <div class="modal-body" v-for = "user in $store.state.Users" :key="user.userID">
                     <!-- @submit.prevent="addUser" -->
                   <form @submit.prevent="editUser"  method="POST" class="mx-4 my-5"> 
                         <div class="row">
@@ -20,6 +20,12 @@
                   <div class="col">
                       <p>LastName</p>
                     <input type="text" class="form-control" v-model="user.lastName" name="lastName" aria-label="Last name" required="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                      <p>Age</p>
+                    <input type="text" class="form-control" v-model="user.userAge" name="age" aria-label="Age" required="">
                   </div>
                 </div>
               <div class="row">
@@ -54,25 +60,29 @@
 export default {
     data() {
         return {
-            firstName:null,
-            lastName:null,
-            userEmail:null,
-            userProfile:null
+            // firstName:null,
+            // lastName:null,
+            // emailAdd:null,
+            // userUrl:null,
+            // userAge:null,
+            // userPass:null,
+            // userID:null
+
         }
     },
     methods: {
-    //     editUser(userID){
-    //   let edit = {
-    //     userID:userID,
-    //     firstName:this.firstName,
-    //     lastName:this.lastName,
-    //     userAge:this.userAge,
-    //     emailAdd:this.emailAdd,
-    //     userUrl:this.userUrl,
-    //     userRole:this.userRole
-    //   }
-    //   this.$store.dispatch('editUser',edit)
-    // }
+    //      editUser(userID){
+    //  let edit = {
+    //      userID:userID,
+    //      firstName:this.firstName,
+    //      lastName:this.lastName,
+    //      userAge:this.userAge,
+    //      emailAdd:this.emailAdd,
+    //      userUrl:this.userUrl,
+    //      userRole:this.userRole
+    //    }
+    //    this.$store.dispatch('editUser',edit)
+    //  }
     },
 }
 </script>
