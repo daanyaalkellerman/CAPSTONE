@@ -27,7 +27,7 @@ app.use( (req, res, next) => {
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.static('views'))
-app.use('/login',token,loggedUser,loginRouter)
+app.use('/login',loggedUser,token,loginRouter)
 app.use('/reviews',revRouter)
 app.use('/users',userRouter)
 app.use('/products',prodRouter)
