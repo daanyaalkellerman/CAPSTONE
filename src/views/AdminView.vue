@@ -3,7 +3,7 @@
       <section class="adminNexa">
         <div>
             <h2 class="tableTop">Users</h2>
-          <AddModel/>
+          <AddUserModel/>
         </div>
         <!-- USER TABLE -->
         <div class="container" >
@@ -15,6 +15,7 @@
                       <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Age</th>
                         <th>Email</th>
                         <th>Role</th>
                         <th>Image</th>
@@ -25,10 +26,11 @@
                       <tr v-for="user in $store.state.Users" :key="user.userID">
                         <td data-label="First Name">{{user.firstName}}</td>
                         <td data-label="Last Name">{{user.lastName}}</td>
+                        <td data-label="Age">{{user.userAge}}</td>
                         <td data-label="Email">{{user.emailAdd}}</td>
                         <td data-label="Role">{{user.userRole}}</td>
                         <td data-label="Image"><img :src=user.userUrl alt=""></td>
-                        <td data-label="Edit"><EditModel/><button class="delBtn">Del</button></td>
+                        <td data-label="Edit" ><EditUserModel/><button @click="deleteUser(user.userID)" class="delBtn">Del</button></td>
                       </tr>
                     </tbody>
                     <tbody v-else>
@@ -40,60 +42,11 @@
             </div>
           </div>
           
-          <!-- PRODUCT TABLE -->
           <div>
             <h2 class="tableTop">Products</h2>
-            <button type="button" class="btn btn-secondary my-2" data-bs-toggle="modal" data-bs-target="#exampleModal1">Add Product</button>
+          <AddProdModel/>
         </div>
-        <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setTimeout()"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- @submit.prevent="addUser" -->
-                  <form  method="POST" class="mx-4 my-5"> 
-                        <div class="row">
-                <div class="col">
-                    <p>Product Name</p>
-                  <input type="text" class="form-control" v-model="prodName" name="prodName"  aria-label="prodName" required="">
-                </div>
-              </div>
-                <div class="row">
-                  <div class="col">
-                      <p>Description</p>
-                    <input type="text" class="form-control" v-model="prodDes" name="prodDes" aria-label="prodDes" required="">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                      <p>Image Url</p>
-                    <input type="text" class="form-control"  v-model="image" name="image" aria-label="image" required="">
-                  </div>
-                </div>
-              <div class="row">
-                <div class="col">
-                    <p>Category</p>
-                  <input type="text" class="form-control" v-model="category" name="category"  aria-label="Category" required="">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <p>Price</p>
-                  <input type="text" class="form-control"  v-model="price" name="price" aria-label="Price" required="">
-                </div>
-              </div>
-              <div class="modal-footer">
-              <button type="submit" class="btn btn-dark"><span id="logs">Create product</span></button>
-            </div>
-        
-        </form>
-                </div> 
-            </div>
-            </div>
-            </div>
+          <!-- PRODUCT TABLE -->
           <div class="container">
             <div class="row">
               <div class="col">
@@ -109,15 +62,18 @@
                         <th>Edit</th>
                       </tr>
                     </thead>
-                    <tbody class="">
-                      <tr>
-                        <td data-label="Name  ">Daanyaal</td>
-                        <td data-label="Description">Kellerman</td>
-                        <td data-label="Category">Hatchback</td>
-                        <td data-label="Price">R100000</td>
-                        <td data-label="Image"><img src="https://i.postimg.cc/66gMXvhq/tablet-2560x1700.jpg" alt=""></td>
-                        <td data-label="Edit"><button class="editBtn">Edit</button><button class="delBtn">Del</button></td>
+                    <tbody v-if="Products">
+                      <tr v-for="product in $store.state.Products" :key="product.prodID">
+                        <td data-label="Product Name">{{product.prodName}}</td>
+                        <td data-label="Description">{{product.prodDes}}</td>
+                        <td data-label="Category">{{product.category}}</td>
+                        <td data-label="Price">{{product.price}}</td>
+                        <td data-label="Image"><img :src=product.prodUrl alt=""></td>
+                        <td data-label="Edit"><EditProdModel/><button @click="deleteProd(product.prodID)" class="delBtn">Del</button></td>
                       </tr>
+                    </tbody>
+                    <tbody v-else>
+            <SpinnerView/>
                     </tbody>
                   </table>
                 </div>
@@ -129,8 +85,10 @@
 </template>
 <script>
 import SpinnerView from '../components/SpinnerView.vue';
-import AddModel from '../components/AddUsermodel.vue';
-import EditModel from '../components/EditUsermodal';
+import AddUserModel from '../components/AddUsermodel.vue';
+import EditUserModel from '../components/EditUsermodal.vue';
+import AddProdModel from '../components/AddProdmodel.vue';
+import EditProdModel from '../components/EditProdmodel.vue';
 export default {
   data() {
     return {
@@ -144,6 +102,7 @@ export default {
       user:null,
       prodName:null,
       prodDes:null,
+      prodUrl:null,
       price:null,
       category:null
     }
@@ -152,15 +111,39 @@ export default {
    
   },
     components:{
-      SpinnerView,AddModel,EditModel
+      SpinnerView,AddUserModel,EditUserModel,AddProdModel,EditProdModel
     },
     computed:{
       Users(){
        return this.$store.state.Users
+      },  
+      Products(){
+        return this.$store.state.Products
       }
     },
     mounted() {
       this.$store.dispatch('getUsers')
+      this.$store.dispatch('getProducts')
+    },
+    methods: {
+      deleteUser(userID){
+        this.$store.dispatch('deleteUser',userID)
+      },
+      deleteProd(prodID){
+        this.$store.dispatch('deleteProd',prodID)
+      },
+      editUser(userID){
+     let edit = {
+         userID:userID,
+       firstName:this.firstName,
+         lastName:this.lastName,
+         userAge:this.userAge,
+         emailAdd:this.emailAdd,
+         userUrl:this.userUrl,
+         userRole:this.userRole
+       }
+       this.$store.dispatch('editUser',edit)
+     }
     },
  
     }

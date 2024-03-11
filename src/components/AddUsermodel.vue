@@ -5,43 +5,55 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="setTimeout()"></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
                 </div>
                 <div class="modal-body">
                     <!-- @submit.prevent="addUser" -->
-                  <form  method="POST" class="mx-4 my-5"> 
+                  <form @submit.prevent="createUser" method="POST" class="mx-4 my-5"> 
                         <div class="row">
                 <div class="col">
                     <p>FirstName</p>
-                  <input type="text" class="form-control" v-model="firstName" name="firstName"  aria-label="First name" required="">
+                  <input type="name" class="form-control" v-model="firstName" name="firstName"  aria-label="firstName" required="">
                 </div>
               </div>
                 <div class="row">
                   <div class="col">
                       <p>LastName</p>
-                    <input type="text" class="form-control" v-model="lastName" name="lastName" aria-label="Last name" required="">
+                    <input type="name" class="form-control" v-model="lastName" name="lastName" aria-label="lastName" required="">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                      <p>Age</p>
+                    <input type="age" class="form-control" v-model="userAge" name="age" aria-label="age" required="">
                   </div>
                 </div>
               <div class="row">
                 <div class="col">
                     <p>Email</p>
-                  <input type="text" class="form-control" v-model="email" name="userEmail"  aria-label="First name" required="">
+                  <input type="email" class="form-control" v-model="emailAdd" name="userEmail"  aria-label="emailAdd" required="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    <p>Image</p>
+                  <input type="text" class="form-control"  v-model="userUrl" name="userUrl" aria-label="userUrl">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                    <p>Role</p>
+                  <input type="text" class="form-control"  v-model="userRole" name="userRole" aria-label="userRole" >
                 </div>
               </div>
               <div class="row">
                 <div class="col">
                     <p>Password</p>
-                  <input type="password" class="form-control"  v-model="userPass" name="userPass" aria-label="Last name" required="">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                    <p>Password</p>
-                  <input type="text" class="form-control"  v-model="image" name="userPass" aria-label="Image" required="">
+                  <input type="password" class="form-control"  v-model="userPass" name="userPass" aria-label="userPass" required="">
                 </div>
               </div>
               <div class="modal-footer">
-              <button type="submit" class="btn btn-dark"><span id="logs">Create User</span></button>
+              <button @click="createUse" class="btn btn-dark"><span id="logs">Create User</span></button>
             </div>
         
         </form>
@@ -54,17 +66,20 @@
 export default {
     data() {
       return {
-        
-        userID:null,
-            userRole:null,
-            firstName:null,
-            lastName:null,
-            email:null,
-            image:null,
-            userPass:null,
-            user:null
+        firstName:null,
+        lastName:null,
+        emailAdd:null,
+        userUrl:null,
+        userRole:null,
+        userPass:null,
+        userAge: null
       }
     },  
+    computed:{
+      createUse(){
+        this.$store.dispatch('createUser', this.$data)
+      }
+    }
 }
 </script>
 <style scoped>
