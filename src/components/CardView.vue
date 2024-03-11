@@ -1,5 +1,4 @@
 <template lang="">
-
      <div class="card1" v-for="product in $store.state.Products" :key="product.prodID">
                 <div class="image"><img :src=product.prodUrl alt="" id="img"></div>
                  <div class="content">
