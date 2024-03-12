@@ -7,59 +7,28 @@
         <h1>FEATURED PRODUCTS</h1>
         
         <div class="container cardsb">
-            <div class="card1">
-                <div class="image"><img src="https://i.postimg.cc/L6jjvP5z/1400128763.jpg" alt="" id="img"></div>
-                 <div class="content">
-                     <span class="title">
-                       Car this
-                     </span>    
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               <p class="action">
-                R159 999
-               </p>
-                 </div>
-               </div>
-               <div class="card1">
-                <div class="image"><img src="https://i.postimg.cc/L6jjvP5z/1400128763.jpg" alt="" id="img"></div>
-                 <div class="content">
-                     <span class="title">
-                       Car this
-                     </span>    
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               <p class="action">
-                R159 999
-               </p>
-                 </div>
-               </div>
-               <div class="card1">
-                <div class="image"><img src="https://i.postimg.cc/L6jjvP5z/1400128763.jpg" alt="" id="img"></div>
-                 <div class="content">
-                     <span class="title">
-                       Car this
-                     </span>    
-                   <p class="desc">
-                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-                     dolores, possimus pariatur animi temporibus nesciunt praesentium 
-                   </p>
-               <p class="action">
-                R159 999
-               </p>
-                 </div>
-               </div>
+          <CardView/>
+           
             </div>
             <button class="viewM"><router-link to="/products" class="nav-link">VIEW MORE>>></router-link></button>
             </section>
     </body>
 </template>
 <script>
+import CardView from '@/components/CardView.vue';
 export default {
-    
+  data() {
+    return {
+      prodName:null,
+      prodDes:null,
+      prodUrl:null,
+      price:null,
+      category:null
+    }
+  },
+    components:{
+      CardView
+    }
 }
 </script>
 <style scoped>

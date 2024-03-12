@@ -7,7 +7,7 @@
         </div>
         <div>
             <h3 class="footH">Links</h3>
-            <router-link to="/home" class="nav-link">Home</router-link>
+            <router-link v-if="$cookies.get('jwt')" to="/home" class="nav-link">Home</router-link>
             <router-link to="/about" class="nav-link">About</router-link>
             <router-link to="/contact" class="nav-link">Contact</router-link>
            <br><br>

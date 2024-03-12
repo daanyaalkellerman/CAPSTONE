@@ -1,6 +1,6 @@
 <template lang="">
     <body class="bodBack">
-      <!-- <section class="signup">
+      <section class="signup">
         <form @submit.prevent="signin" class="form">
             <span class="title">Register</span>
             <label for="firstname" class="label">First Name</label>
@@ -15,16 +15,6 @@
             <input type="password" id="password" name="password" required="" v-model="userPass" class="input">
             <button @click="signin" class="send">Register</button>
           </form>
-    </section> -->
-      <section class="signup">
-        <form @submit.prevent='login' class="form" action="">
-            <span class="title">Login</span>
-            <label for="email" class="label">Email</label>
-            <input type="email" id="email" name="email" required="email" v-model="emailAdd" class="input">
-            <label for="password" class="label">Password</label>
-            <input type="password" id="password" name="password" required="password" v-model="userPass" class="input">
-            <button @click="login" class="send">Login</button>
-          </form>
     </section>
 </body>
 </template>
@@ -32,21 +22,17 @@
 export default {
   data(){
     return{
-      emailAdd:null,
-      userPass:null
-        // firstName:null,
-        // lastName:null,
-        // emailAdd:null,
-        // userUrl:'',
-        // userRole:'',
-        // userPass:null,
-        // userAge: null
+        firstName:null,
+        lastName:null,
+        emailAdd:null,
+        userUrl:'',
+        userRole:'',
+        userPass:null,
+        userAge: null
     }
   },
   computed:{
-    login(){
-      this.$store.dispatch('login',this.$data)
-    },
+  
     signin(){
       this.$store.dispatch('createUser', this.$data)
 
