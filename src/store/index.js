@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import router from '@/router';
+import { RouterLink } from 'vue-router';
 // axios.defaults.withCredentials = true
 const url = 'https://drive-nexa.onrender.com';
 
@@ -45,7 +46,8 @@ export default createStore({
     async createUser ({commit},newUser){
       let {data} = await axios.post(url + '/users', newUser)
       alert(data.msg)
-      window.location.reload()
+      
+      window.location.assign('/login')
     },
     async editUser ({commit},patch){
       await axios.patch(url+'/users/' + patch.userID , patch)
@@ -70,17 +72,17 @@ export default createStore({
       alert('Click Ok to finalize deletion')
       window.location.reload()
     },
-    async login({commit},logged){
-      let {data} = await axios.post(url+'/login',logged)
-      $cookies.set('jwt',data.tokenSign)
-      alert('Logged in')
-      await router.push('/home')
-      window.location.reload()
-    },
+    async login({commit},loggedIn){
+        let {data} = await axios.post(url+'/login',loggedIn)
+        $cookies.set('jwt',data.tokenSign)
+          alert(data.msg)
+          // window.location.assign('/home')  
+          window.location.replace('/home')
+ },
     async logout(context){
       let cookies = $cookies.keys()
       $cookies.remove('jwt')
-      window.location.reload()
+      window.location.assign('/login')
     }
   },
   modules: {

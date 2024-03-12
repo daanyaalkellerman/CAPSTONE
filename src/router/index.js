@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
+    name: 'signup',
+    component: () => import('../views/SignView.vue')
+  },
+  {
+    path: '/login',
     name: 'login',
     component: () => import('../views/LoginView.vue')
   },
@@ -40,11 +45,6 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('../views/ProfileView.vue')
-  },
-  {
-    path: '/single',
-    name: 'single',
-    component: () => import('../views/SingleView.vue')
   }
 ]
 

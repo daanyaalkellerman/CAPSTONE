@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <img :src=user.userUrl alt="" class="my-4">
                                 <div class="card-text">
-                                    <h3 class="my-4">{{user.firstName}} {{user.lastName}}</h3>
+                                    <h3 class="my-4">user.firstName user.lastName</h3>
                               
                                     <a href="" class="logBut bg-white my-3 p-2 px-5" >click Log Out</a>
                                 </div>

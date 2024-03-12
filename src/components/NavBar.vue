@@ -14,33 +14,34 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
-                <router-link to="/profile" class="nav-link">Profile</router-link>
+                <router-link v-if="!$cookies.get('jwt')"  to="/" class="nav-link">SignUp</router-link>
               </li>
             <li class="nav-item">
-                <router-link v-if="!$cookies.get('jwt')" to="/" class="nav-link">Login</router-link>
+                <router-link v-if="$cookies.get('jwt')"  to="/profile" class="nav-link">Profile</router-link>
               </li>
             <li class="nav-item">
-                <router-link to="/home" class="nav-link">Home</router-link>
+                <router-link v-if="!$cookies.get('jwt')" to="/login" class="nav-link">Login</router-link>
+              </li>
+            <li class="nav-item">
+                <router-link v-if="$cookies.get('jwt')" to="/home" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
                 <router-link to="/about" class="nav-link">About</router-link>
             </li>
             <li class="nav-item">
-                <router-link to="/products" class="nav-link">Products</router-link>
+                <router-link v-if="$cookies.get('jwt')"  to="/products" class="nav-link">Products</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"   >
                 <router-link to="/contact" class="nav-link">Contact</router-link>
             </li>
-            <li class="nav-item">
-                <router-link to="/admin" class="nav-link">Admin</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link to="/single" class="nav-link">Single</router-link>
+            <li class="nav-item"
+            >
+                <router-link v-if="$cookies.get('jwt')"  to="/admin" class="nav-link">Admin</router-link>
             </li>
           </ul>
         </div>
         <div class="offcanvas-bottom">
-          <button v-if="$cookies.get('jwt')" @click="logout" ></button>
+          <router-link to="/"><button v-if="$cookies.get('jwt')" @click="logout" class="logout" >Logout</button></router-link>
 
         </div>
       </div>
@@ -49,7 +50,16 @@
 </template>
 <script>
 export default {
+  mounted() {
+    this.$store.dispatch('getUsers')
+  },
     computed: {
+      login(){
+      this.$store.dispatch('login',this.$data)
+    },
+      Users(){
+       return this.$store.state.Users
+      },  
       logout(){
         this.$store.dispatch('logout')
       }
@@ -85,6 +95,19 @@ export default {
 .offcanvas-header{
     background-color: #040B13;
     
+}
+.offcanvas-bottom{
+  background-color: #040B13;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.logout{
+  background-color: whitesmoke;
+  color: #040B13;
+  border: 2px solid #040B13;
+  width: 100px;
+  height: 40px;
 }
 @media (min-width:300px) and (max-width:600px){
   .driveLogo{

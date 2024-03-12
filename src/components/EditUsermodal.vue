@@ -42,6 +42,12 @@
               </div>
               <div class="row">
                 <div class="col">
+                    <p>User Role</p>
+                  <input type="text" class="form-control" v-model="user.userRole" name="Role"  aria-label="role" required="">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
                     <p>Password</p>
                   <input type="password" class="form-control" v-model="user.userPass" name="userPass"  aria-label="Password" required="">
                 </div>
