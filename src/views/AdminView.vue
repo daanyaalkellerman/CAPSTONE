@@ -177,7 +177,7 @@ export default {
 .bodBack{
     background-color: #040B13;
    width: auto;
-   color: white;
+   color: #D9D9D9;
 }
 img{
     width: 70px;
@@ -187,13 +187,13 @@ img{
   .delBtn {
    background-color: #5889B0;
    padding: 4px 8px;
-    color: #fff;
+    color: #D9D9D9;
    border: 1px solid black;
   }
   .editBtn {
    background-color: #040B13;
    padding: 4px 8px;
-    color: #fff;
+    color: #D9D9D9;
    border: 1px solid black;
   }
   
@@ -228,7 +228,7 @@ img{
       }
   
       .table tbody{
-        background: white;
+        background: #D9D9D9;
       }
   
       .table tbody tr td{

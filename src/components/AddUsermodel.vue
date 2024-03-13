@@ -84,7 +84,7 @@ export default {
 </script>
 <style scoped>
      .modal-content{
-    background: white;
+    background: #D9D9D9;
   }
   .modal-body p{
     margin: 0;
@@ -110,7 +110,7 @@ export default {
       margin-bottom: 20px;
       background-color: transparent;
       border: none;
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid #D9D9D9;
       outline: none;
       height: 40px;
       color: black;

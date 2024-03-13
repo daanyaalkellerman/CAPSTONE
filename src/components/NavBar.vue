@@ -72,10 +72,10 @@ export default {
     width: 180px;
 }
 #cart{
-    color: white;
+  color: #D9D9D9;
 }
 .navbar{
-    color: #fff;
+    color: #D9D9D9;
     max-height: 130px;
     text-align: center;
     background-color: #040B13;
@@ -103,7 +103,7 @@ export default {
   display: flex;
 }
 .logout{
-  background-color: whitesmoke;
+  background-color:#D9D9D9;;
   color: #040B13;
   border: 2px solid #040B13;
   width: 100px;

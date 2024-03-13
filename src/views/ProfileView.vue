@@ -66,7 +66,7 @@ export default {
     background-color: #040B13 !important;
     min-height: 100%;
    width: auto;
-   color: white;
+   color: #D9D9D9;
    
 }
 .prof{
@@ -89,7 +89,7 @@ export default {
 .card-body{
     height: 440px;
     background-color: #5889B0;
-    color: white;
+    color: #D9D9D9;
 }
 
 .card-body img{

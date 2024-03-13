@@ -36,7 +36,7 @@ export default {
     background-color: #040B13;
     height: 100%;
    width: auto;
-   color: white;
+   color: #D9D9D9;
 }
 .headNexa{
     font-size: 70px;
@@ -91,7 +91,7 @@ width: 100%;
 height: auto;
   }
   .title {
-    color: #fff;
+    color: #D9D9D9;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -100,7 +100,7 @@ height: auto;
   
   .desc {
     margin-top: 0.5rem;
-    color: #fff;
+    color: #D9D9D9;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
@@ -142,7 +142,7 @@ height: auto;
     background-color: transparent;
     border: 3px solid #5889B0;
     border-radius: 20px;
-    color: white;
+    color: #D9D9D9;
     font-size: 20px;
     
   }
@@ -206,7 +206,7 @@ width: 100%;
 height: auto;
   }
   .title {
-    color: #fff;
+    color: #D9D9D9;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -215,7 +215,7 @@ height: auto;
   
   .desc {
     margin-top: 0.5rem;
-    color: #fff;
+    color: #D9D9D9;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }

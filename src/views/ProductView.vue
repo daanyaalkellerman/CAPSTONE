@@ -70,7 +70,7 @@ width: 100%;
 height: auto;
   }
   .title {
-    color: #fff;
+    color: #D9D9D9;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -78,7 +78,7 @@ height: auto;
   
   .desc {
     margin-top: 0.5rem;
-    color: #fff;
+    color: #D9D9D9;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
@@ -260,7 +260,7 @@ width: 100%;
 height: auto;
   }
   .title {
-    color: #fff;
+    color: #D9D9D9;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -269,7 +269,7 @@ height: auto;
   
   .desc {
     margin-top: 0.5rem;
-    color: #fff;
+    color: #D9D9D9;
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
