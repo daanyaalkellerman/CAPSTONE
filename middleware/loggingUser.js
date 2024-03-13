@@ -1,6 +1,6 @@
 import { loggingUser } from "../models/user.js";
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
+import jwt, { NotBeforeError } from 'jsonwebtoken'
 import { getEmail } from "../models/user.js";
 
 const loggedUser  = async (req,res,next)=>{
@@ -19,10 +19,9 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
-           
-                res.send({msg:'Incorrect Email or Password'}) 
-     
-        }
+            res.send({msg:'dont work'})
+                }
+
 
     })
 }
