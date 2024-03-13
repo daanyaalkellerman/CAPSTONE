@@ -14,7 +14,7 @@
             <label for="password" class="label">Password</label>
             <input type="password" id="password" name="password" required="" v-model="userPass" class="input">
             <button @click="signin" class="send">Register</button>
-            <p>Have an account already?<router-link to="/login">Login</router-link></p>
+            <p class="account">Have an account already?<router-link to="/login">Login</router-link></p>
           </form>
     </section>
 </body>
@@ -43,7 +43,9 @@ export default {
 }
 </script>
 <style scoped>
-
+.account{
+  color:#040B13;
+}
 .bodBack{
     background-color: #040B13;
    width: auto;

@@ -24,7 +24,7 @@
             <label for="password" class="label">Password</label>
             <input type="password" id="password" name="password" required="password" v-model="userPass" class="input">
             <button @click="login" class="send">Login</button>
-            <p>Dont have an account?<router-link to="/">Sign Up</router-link></p>
+            <p class="account">Dont have an account?<router-link to="/">Sign Up</router-link></p>
           </form>
     </section>
 </body>
@@ -57,6 +57,9 @@ export default {
 }
 </script>
 <style scoped>
+.account{
+  color:#040B13;
+}
 
 .bodBack{
     background-color: #040B13;
@@ -128,7 +131,7 @@ export default {
   
   .send {
     background-color: #040B13;
-    color: #D9D9D9;
+    color: #fff;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -192,7 +195,7 @@ export default {
       }
       
       .input:focus {
-        background-color: #D9D9D9;
+        background-color: #fff;
         box-shadow: 0 0 0 2px #cbd5e0;
       }
       
@@ -207,7 +210,7 @@ export default {
       .submit {
         margin-top:5px;
         background-color: #040B13;
-        color: #D9D9D9;
+        color: #fff;
         border: none;
         border-radius: 4px;
         padding: 10px 20px;
