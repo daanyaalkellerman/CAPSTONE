@@ -1,6 +1,7 @@
 import { loggingUser } from "../models/user.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import router from "../routes/login.js";
 
 
 const loggedUser  = async (req,res,next)=>{
@@ -17,8 +18,9 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
-            res.send({msg: 'Incorrect Email or Password'})
-            res.redirect('/login')
+            res.send({path: '/login',
+            msg: 'Incorrect Email or Password'})
+            
         }
 
     })
