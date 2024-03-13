@@ -17,6 +17,7 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
+            window.location.assign('/login')
             res.send({msg: 'Incorrect Email or Password'})
         }
 
