@@ -24,6 +24,7 @@
             <label for="password" class="label">Password</label>
             <input type="password" id="password" name="password" required="password" v-model="userPass" class="input">
             <button @click="login" class="send">Login</button>
+            <p>Dont have an account?<router-link to="/">Sign Up</router-link></p>
           </form>
     </section>
 </body>
@@ -60,7 +61,7 @@ export default {
 .bodBack{
     background-color: #040B13;
    width: auto;
-   color: white;
+   color: #D9D9D9;
 }
 
 .signup{
@@ -113,7 +114,7 @@ export default {
   }
   
   .input:focus {
-    background-color: #fff;
+    background-color:#D9D9D9;
     box-shadow: 0 0 0 2px #cbd5e0;
   }
   
@@ -127,7 +128,7 @@ export default {
   
   .send {
     background-color: #040B13;
-    color: #fff;
+    color: #D9D9D9;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -191,7 +192,7 @@ export default {
       }
       
       .input:focus {
-        background-color: #fff;
+        background-color: #D9D9D9;
         box-shadow: 0 0 0 2px #cbd5e0;
       }
       
@@ -206,7 +207,7 @@ export default {
       .submit {
         margin-top:5px;
         background-color: #040B13;
-        color: #fff;
+        color: #D9D9D9;
         border: none;
         border-radius: 4px;
         padding: 10px 20px;

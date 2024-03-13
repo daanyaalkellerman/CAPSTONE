@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
 import router from '@/router';
-import { RouterLink } from 'vue-router';
+import sweet from 'sweetalert'
 // axios.defaults.withCredentials = true
 const url = 'https://drive-nexa.onrender.com';
 
@@ -11,7 +11,7 @@ export default createStore({
     Users: [],
     User:[],
     cart:[],
-    loggedIn:false
+    setloggedIn:false
   },
   getters: {
   },
@@ -25,7 +25,7 @@ export default createStore({
     setUser(state, data){
       state.User = data
     },
-    setLoggedUser(state, data){
+    setLoggedIn(state, data){
       state.loggedIn = data
     }
   },
@@ -62,8 +62,8 @@ export default createStore({
       alert(data.msg)
       window.location.reload()
     },
-    async editProd({commit}, patch){
-      await axios.patch(url+ '/products/'+ patch.prodID,patch)
+    async editProd({commit}, product){
+      await axios.patch(url+ '/products/'+ product.prodID,product)
       alert('Edit MADE')
       window.location.reload()
     },
@@ -73,11 +73,33 @@ export default createStore({
       window.location.reload()
     },
     async login({commit},loggedIn){
-        let {data} = await axios.post(url+'/login',loggedIn)
+      try{
+        let data = await axios.post(url+'/login',loggedIn)
+        // let [{userRole}] = data.user;
+        // await $cookies.set('userRole', userRole)
+        // let user = data.user;
+        // await $cookies.set('user',user)
         $cookies.set('jwt',data.tokenSign)
-          alert(data.msg)
-          // window.location.assign('/home')  
-          window.location.replace('/home')
+        commit('setLoggedIn',true)
+        sweet({
+          title:'Login',
+          icon:'success',
+          text:'Login Successfully',
+          timer:40000
+        })
+        window.location.assign('/home',40000)
+        await router.push('/home')
+         
+      }catch(err){
+        sweet({
+          title:'Error',
+          icon:'error',
+          text:'Incorrect Details',
+          timer:40000
+        })
+
+
+      }
  },
     async logout(context){
       let cookies = $cookies.keys()

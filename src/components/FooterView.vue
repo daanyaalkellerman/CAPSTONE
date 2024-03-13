@@ -45,11 +45,11 @@ export default {
     width: 120px;
 }
 .fa{
-  color:white;
+  color:#D9D9D9;
 }
     .footNexa{
-    color: #fff;
-    border-top: 1px solid white;
+    color: #D9D9D9;
+    border-top: 1px solid #D9D9D9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +59,7 @@ export default {
     
   }
   .copyNexa{
-    color: #fff;
+    color: #D9D9D9;
     text-align: center;
     margin: 0;
     background-color: #040B13;

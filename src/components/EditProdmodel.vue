@@ -65,7 +65,7 @@ export default {
     .editBtn {
    background-color: #040B13;
    padding: 4px 8px;
-    color: #fff;
+    color: #D9D9D9;
    border: 1px solid black;
   }
 </style>
