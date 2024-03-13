@@ -16,9 +16,8 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
-            throw {
-                msg:'Incorrect Email or Password'
-
+            if (err === true){
+                res.send({msg:'Incorrect Email or Password'}) 
             }
         }
 
