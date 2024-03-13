@@ -14,14 +14,12 @@ const loggedUser  = async (req,res,next)=>{
                 tokenSign:tokenSign,
                 msg: 'Login Successful'
             })
+            next()
         }else{
-            if(result === false){
-                res.send({msg:'Incorrect Email or Password'})
-                next()
-                
+            throw {
+                msg:'Incorrect Email or Password'
+
             }
-            
-            
         }
 
     })
