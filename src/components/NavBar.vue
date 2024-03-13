@@ -5,7 +5,8 @@
           <span class="navbar-toggler-icon"></span>
         </button> 
         <span class="name animate__animated animate__backInDown"><img class="driveLogo" src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png"></span>
-       <router-link to="/cart"> <i class="fa-solid fa-cart-shopping pe-4" id="cart"></i></router-link>
+       <span class="nav-icons"><router-link v-if="$cookies.get('jwt')"to="/cart"> <i class="fa fa-cart-shopping " id="cart"></i></router-link>
+       <router-link  v-if="$cookies.get('jwt')" to="/profile"><i class="fa fa-user" id="cart"></i></router-link></span>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"></h5>
@@ -70,6 +71,13 @@ export default {
 
 .driveLogo{
     width: 180px;
+}
+.nav-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
 }
 #cart{
   color: #D9D9D9;
