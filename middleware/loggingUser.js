@@ -16,6 +16,8 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
+            router.push('/login')
+
             res.send({msg: 'Incorrect Email or Password'})
         }
 
