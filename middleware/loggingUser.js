@@ -19,7 +19,7 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
-            res.send({msg:'dont work'})
+            res.status(403).send({msg:'dont work'})
                 }
 
 
