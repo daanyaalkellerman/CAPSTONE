@@ -5,7 +5,6 @@ let {cookie} = req.headers
 let headerToken = cookie && cookie.split('=')[1]
         if(headerToken === null)res.sendStatus(401)
     jwt.verify(headerToken,process.env.SECRET_KEY,(err,user,admin)=>{
-        if(err) return res.sendStatus(403)
         req.user = user
         req.admin = admin
         next()

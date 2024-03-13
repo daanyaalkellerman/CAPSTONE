@@ -2,6 +2,7 @@ import { loggingUser } from "../models/user.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+
 const loggedUser  = async (req,res,next)=>{
     const {emailAdd,userPass} = req.body
     const cryptedPassword = await loggingUser(emailAdd)
@@ -16,8 +17,6 @@ const loggedUser  = async (req,res,next)=>{
             })
             next()
         }else{
-            router.push('/login')
-
             res.send({msg: 'Incorrect Email or Password'})
         }
 
