@@ -1,10 +1,12 @@
 import { loggingUser } from "../models/user.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { getEmail } from "../models/user.js";
 
 const loggedUser  = async (req,res,next)=>{
     const {emailAdd,userPass} = req.body
     const cryptedPassword = await loggingUser(emailAdd)
+    let thisUser = await getEmail(emailAdd);
     bcrypt.compare(userPass,cryptedPassword,(err,result)=>{
         if(err) throw err
         if(result === true){
@@ -12,13 +14,14 @@ const loggedUser  = async (req,res,next)=>{
             res.cookie('jwt',tokenSign,{httpOnly:false})
             res.send({
                 tokenSign:tokenSign,
-                msg: 'Login Successful'
+                msg: 'Login Successful',
+                user: thisUser
             })
             next()
         }else{
-            if (err === true){
+           
                 res.send({msg:'Incorrect Email or Password'}) 
-            }
+     
         }
 
     })
