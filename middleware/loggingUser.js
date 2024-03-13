@@ -1,6 +1,6 @@
 import { loggingUser } from "../models/user.js";
 import bcrypt from 'bcrypt'
-import jwt, { NotBeforeError } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { getEmail } from "../models/user.js";
 
 const loggedUser  = async (req,res,next)=>{
