@@ -14,14 +14,9 @@ const loggedUser  = async (req,res,next)=>{
                 tokenSign:tokenSign,
                 msg: 'Login Successful'
             })
+            next()
         }else{
-            if(result === false){
-                res.send({msg:'Incorrect Email or Password'})
-                next()
-                
-            }
-            
-            
+          res.send({msg:'Incorrect Email or Password'})
         }
 
     })
