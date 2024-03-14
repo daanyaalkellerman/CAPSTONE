@@ -2,8 +2,9 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import router from '@/router';
 import sweet from 'sweetalert'
+
 // axios.defaults.withCredentials = true
-const url = 'https://drive-nexa.onrender.com';
+const url = 'http://localhost:4090';
 
 export default createStore({
   state: {
@@ -74,12 +75,12 @@ export default createStore({
     },
     async login({commit},loggedIn){
       try{
-        let data = await axios.post(url+'/login',loggedIn)
-        // let [{userRole}] = data.user;
-        // await $cookies.set('userRole', userRole)
-        // let user = data.user;
-        // await $cookies.set('user',user)
+        let {data} = await axios.post(url+'/login',loggedIn)
         $cookies.set('jwt',data.tokenSign)
+        let [{userRole}] = data.user;
+         $cookies.set('userRole', userRole)
+        let [user] = data.user;
+         $cookies.set('user',user)
         commit('setLoggedIn',true)
         sweet({
           title:'Login',
@@ -87,7 +88,7 @@ export default createStore({
           text:'Login Successfully',
           timer:40000
         })
-        window.location.assign('/home',40000)
+        window.location.assign('/home')
         await router.push('/home')
          
       }catch(err){
@@ -102,9 +103,26 @@ export default createStore({
       }
  },
     async logout(context){
-      let cookies = $cookies.keys()
-      $cookies.remove('jwt')
-      window.location.assign('/login')
+      try{
+        let cookies = $cookies.keys()
+        $cookies.remove('jwt')
+        $cookies.remove('user')
+        $cookies.remove('userRole')
+        window.location.assign('/login')
+        sweet({
+          title:'Logout',
+          icon: 'success',
+          text: 'Logged out successfully',
+          timer: 40000
+        })
+      }catch(e){
+        sweet({
+          title:'Error',
+          icon:'error',
+          text:'Error when logging out',
+          timer:40000
+        })
+      }
     }
   },
   modules: {
