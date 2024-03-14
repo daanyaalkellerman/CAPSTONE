@@ -26,8 +26,8 @@ export default {
         firstName:null,
         lastName:null,
         emailAdd:null,
-        userUrl:'https://iili.io/JW1yDog.jpg',
-        userRole:'user',
+          userUrl:'https://iili.io/JW1yDog.jpg',
+          userRole:'user',
         userPass:null,
         userAge: null
     }
