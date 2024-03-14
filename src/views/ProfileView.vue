@@ -1,6 +1,6 @@
 <template lang="">
-   <body class="bodBack">
-    <div class="profile" v-for="user in $store.state.User" :key="user.userID">
+    <body class="bodBack">
+       <div class="profile" v-if="user">
         <div class="single">
            <div class="container p-0 justify-content-center">
                 <div class=" justify-content-center">
@@ -9,9 +9,9 @@
                             <div class="card-body">
                                 <img :src=user.userUrl alt="" class="my-4">
                                 <div class="card-text">
-                                    <h3 class="my-4">user.firstName user.lastName</h3>
+                                    <h3 class="my-4">{{user.firstName}} {{user.lastName}}</h3>
                               
-                                    <a href="" class="logBut bg-white my-3 p-2 px-5" >click Log Out</a>
+                                    <a @click="logout" class="logBut bg-white my-3 p-2 px-5" >Log Out</a>
                                 </div>
                             </div>
                         </div>
@@ -42,6 +42,12 @@
 </template>
 <script>
 export default {
+    created(){
+        const Profiler = $cookies.get('user');
+        if(Profiler){
+            this.user = $cookies.get('user')
+        }
+    },
     data() {
         return {
             firstName:null,
@@ -53,7 +59,10 @@ export default {
    computed:{
        User(){
           return this.$store.state.User
-         }
+         },
+         logout(){
+        this.$store.dispatch('logout')
+      }
    },
     mounted() {
       this.$store.dispatch('getUser')
@@ -132,6 +141,7 @@ export default {
         }
 
         .logBut:hover{
+            cursor: pointer;
             color: rgb(0, 0, 0);
            opacity: 90%;
         }

@@ -37,7 +37,7 @@
             </li>
             <li class="nav-item"
             >
-                <router-link v-if="$cookies.get('jwt')"  to="/admin" class="nav-link">Admin</router-link>
+                <router-link v-if="$cookies.get('userRole')==='admin'" to="/admin" class="nav-link">Admin</router-link>
             </li>
           </ul>
         </div>

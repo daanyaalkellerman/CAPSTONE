@@ -131,7 +131,7 @@ export default {
   
   .send {
     background-color: #040B13;
-    color: #fff;
+    color: #D9D9D9;
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -195,7 +195,7 @@ export default {
       }
       
       .input:focus {
-        background-color: #fff;
+        background-color: #D9D9D9;
         box-shadow: 0 0 0 2px #cbd5e0;
       }
       
@@ -210,7 +210,7 @@ export default {
       .submit {
         margin-top:5px;
         background-color: #040B13;
-        color: #fff;
+        color: #D9D9D9;
         border: none;
         border-radius: 4px;
         padding: 10px 20px;
