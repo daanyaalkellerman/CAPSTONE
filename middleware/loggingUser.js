@@ -1,12 +1,13 @@
-import { loggingUser } from "../models/user.js";
+import { getRole, loggingUser,getEmail } from "../models/user.js";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { getEmail } from "../models/user.js";
+
 
 const loggedUser  = async (req,res,next)=>{
     const {emailAdd,userPass} = req.body
     const cryptedPassword = await loggingUser(emailAdd)
     let thisUser = await getEmail(emailAdd);
+    let thisUserRole = await getRole(userRole)
     bcrypt.compare(userPass,cryptedPassword,(err,result)=>{
         if(err) throw err
         if(result === true){
@@ -15,11 +16,12 @@ const loggedUser  = async (req,res,next)=>{
             res.send({
                 tokenSign:tokenSign,
                 msg: 'Login Successful',
-                user: thisUser
+                user: thisUser,
+                userRole: thisUserRole
             })
             next()
         }else{
-            res.status(403).send({msg:'dont work'})
+            res.status(403).send({msg:'Cannot Login'})
         }
 
 
