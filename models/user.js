@@ -13,6 +13,13 @@ const getEmail = async(emailAdd)=>{
     `,[emailAdd])
     return result
 }
+
+const getRole = async(userRole)=>{
+    const [result] = await pool.query(`
+    SELECT * FROM Users WHERE userRole = ?
+    `,[userRole])
+    return result
+}
 const getUser = async(userID)=>{
     const [result] = await pool.query(`
     SELECT * FROM Users WHERE userID = ?
@@ -46,4 +53,4 @@ const loggingUser = async(emailAdd)=>{
     return userPass
 }
 
-export{getUsers,getEmail,getUser,addUser,editUser,deleteUser,loggingUser}
+export{getUsers,getEmail,getRole,getUser,addUser,editUser,deleteUser,loggingUser}
