@@ -7,7 +7,7 @@ const loggedUser  = async (req,res,next)=>{
     const {emailAdd,userPass} = req.body
     const cryptedPassword = await loggingUser(emailAdd)
     let thisUser = await getEmail(emailAdd);
-    let thisUserRole = await getRole(userRole)
+    // let thisUserRole = await getRole(userRole)
     bcrypt.compare(userPass,cryptedPassword,(err,result)=>{
         if(err) throw err
         if(result === true){
@@ -17,7 +17,7 @@ const loggedUser  = async (req,res,next)=>{
                 tokenSign:tokenSign,
                 msg: 'Login Successful',
                 user: thisUser,
-                userRole: thisUserRole
+                // userRole: thisUserRole
             })
             next()
         }else{
