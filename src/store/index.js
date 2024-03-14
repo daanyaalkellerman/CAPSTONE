@@ -4,7 +4,7 @@ import router from '@/router';
 import sweet from 'sweetalert'
 
 // axios.defaults.withCredentials = true
-const url = 'http://localhost:4090';
+const url = 'https://drive-nexa.onrender.com';
 
 export default createStore({
   state: {
@@ -48,7 +48,7 @@ export default createStore({
       let {data} = await axios.post(url + '/users', newUser)
       alert(data.msg)
       
-      window.location.assign('/login')
+      window.location.reload()
     },
     async editUser ({commit},patch){
       await axios.patch(url+'/users/' + patch.userID , patch)

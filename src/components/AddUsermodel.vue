@@ -69,8 +69,8 @@ export default {
         firstName:null,
         lastName:null,
         emailAdd:null,
-        userUrl:null,
-        userRole:null,
+        userUrl:'https://iili.io/JW1yDog.jpg',
+        userRole:'user',
         userPass:null,
         userAge: null
       }
