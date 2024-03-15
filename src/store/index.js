@@ -35,7 +35,7 @@ export default createStore({
       let res = (await axios.get(`${url}/users`)).data;
       commit('setUsers', res)
     },
-    async getUser({commit},userID){
+    async getUser({commit}){
       let res = (await axios.get(`${url}/users`)).data
       commit('setUser',res)
     },
