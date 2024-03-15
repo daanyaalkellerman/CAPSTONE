@@ -186,6 +186,7 @@ place-items:center;
   .category{
     margin: 0;
     font-style: italic;
+    color: #D9D9D9;
   }
   
   .image {

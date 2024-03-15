@@ -35,7 +35,7 @@ export default {
   computed:{
   
     signin(){
-      this.$store.dispatch('createUser', this.$data)
+      this.$store.dispatch('signUser', this.$data)
 
     }
   }
