@@ -11,7 +11,7 @@ export default createStore({
     Products:[],
     Users: [],
     User:[],
-    cart:[],
+    cart:null,
     setloggedIn:false
   },
   getters: {
@@ -36,18 +36,32 @@ export default createStore({
       commit('setUsers', res)
     },
     async getUser({commit},userID){
-      let res = (await axios.get(`${url}/users/`)).data
+      let res = (await axios.get(`${url}/users`)).data
       commit('setUser',res)
     },
      deleteUser ({commit},userID){
-      axios.delete(`${url}/users/${userID}`)
-      alert('Click Ok to finalize deletion')
-      window.location.reload()
+      try{
+        axios.delete(`${url}/users/${userID}`)
+        sweet({
+          title: 'Deletion',
+          icon:'success',
+          text:'User deleted successfuly',
+          timer:400000
+          
+        })
+        window.location.reload()
+      }catch(e){
+        sweet({
+          title:'Failed',
+          icon:'Error',
+          text:'Failed to delete user',
+          timer: 4000
+        })
+      }
     },
     async createUser ({commit},newUser){
       let {data} = await axios.post(url + '/users', newUser)
       alert(data.msg)
-      
       window.location.reload()
     },
     async editUser ({commit},patch){
@@ -56,7 +70,7 @@ export default createStore({
     },
     async getProducts({commit}){
       let res = (await axios.get(`${url}/products`)).data
-        commit('setProducts',res)
+      commit('setProducts',res)
     },
     async createProd({commit}, newProd){
       let {data} = await axios.post(url + '/products' , newProd)
@@ -65,7 +79,7 @@ export default createStore({
     },
     async editProd({commit}, product){
       await axios.patch(url+ '/products/'+ product.prodID,product)
-      alert('Edit MADE')
+      alert('Edited')
       window.location.reload()
     },
     async deleteProd({commit},prodID){
@@ -73,14 +87,33 @@ export default createStore({
       alert('Click Ok to finalize deletion')
       window.location.reload()
     },
+    async signUser ({commit},sign){
+      try{
+        let {data} = await axios.post(url + '/users', sign)
+        sweet({
+          title:'Account Created',
+          icon:'Success',
+          text:'Signed in successfully',
+          timer:40000
+        })
+          window.location.assign('/login')
+      }catch(e){
+        sweet({
+          title:'Error',
+          icon:'Error',
+          text:'Account exists with that email',
+          timer:40000
+        })
+      }
+    },
     async login({commit},loggedIn){
       try{
         let {data} = await axios.post(url+'/login',loggedIn)
         $cookies.set('jwt',data.tokenSign)
         let [{userRole}] = data.user;
-         $cookies.set('userRole', userRole)
+        $cookies.set('userRole', userRole)
         let [user] = data.user;
-         $cookies.set('user',user)
+        $cookies.set('user',user)
         commit('setLoggedIn',true)
         sweet({
           title:'Login',

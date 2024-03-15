@@ -89,6 +89,7 @@ export default {
     background-color: #040B13;
       opacity: 85%;
       text-align: left;
+      position: fixed;
   }
   .nav-link{
     margin-top: 10px;
