@@ -24,7 +24,7 @@
             <label for="password" class="label">Password</label>
             <input type="password" id="password" name="password" required="password" v-model="userPass" class="input">
             <button @click="login" class="send">Login</button>
-            <p class="account">Dont have an account?<router-link to="/">Sign Up</router-link></p>
+            <p class="account my-3">Dont have an account?<router-link to="/">Sign Up</router-link></p>
           </form>
     </section>
 </body>

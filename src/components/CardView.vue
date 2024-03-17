@@ -98,7 +98,7 @@ place-items:center;
   min-width:  100px;
   height: 35px;
   border: 2px solid #5889B0;
-  border-radius: 0px;
+  border-radius: 5px;
   padding: 5px 10px ;
   background: transparent;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -265,7 +265,7 @@ max-height: 160px;
   font-size: 15px;
   font-weight: bold;
   border: 2px solid #5889B0;
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -277,7 +277,7 @@ max-height: 160px;
   min-width: 200px;
   background-color: transparent;
   border: 2px solid #5889B0;
-  border-radius: 0px 15px 15px 15px;
+  border-radius: 5px; 
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -300,15 +300,15 @@ max-height: 160px;
 }
 
 .dropdown-content #top:hover {
-  border-radius: 0px 13px 0px 0px;
+  border-radius: 5px;
 }
 
 .dropdown-content #bottom:hover {
-  border-radius: 0px 0px 13px 13px;
+  border-radius: 5px;
 }
 
 .paste-button:hover button {
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 5px;
 }
 
 .paste-button:hover .dropdown-content {

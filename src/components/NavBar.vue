@@ -5,7 +5,7 @@
           <span class="navbar-toggler-icon"></span>
         </button> 
         <span class="name animate__animated animate__backInDown"><img class="driveLogo" src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png"></span>
-       <span class="nav-icons"><router-link v-if="$cookies.get('jwt')"to="/cart"> <i class="fa fa-cart-shopping " id="cart"></i></router-link>
+       <span class="nav-icons mx-3"><router-link v-if="$cookies.get('jwt')"to="/cart"> <i class="fa fa-cart-shopping " id="cart"></i></router-link>
        <router-link  v-if="$cookies.get('jwt')" to="/profile"><i class="fa fa-user" id="cart"></i></router-link></span>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
@@ -42,7 +42,7 @@
           </ul>
         </div>
         <div class="offcanvas-bottom">
-          <router-link to="/"><button v-if="$cookies.get('jwt')" @click="logout" class="logout" >Logout</button></router-link>
+          <router-link to="/"><button v-if="$cookies.get('jwt')" @click="logout" class="logout my-5" >Logout</button></router-link>
 
         </div>
       </div>
@@ -70,8 +70,13 @@ export default {
 <style scoped>
 
 .driveLogo{
-    width: 180px;
+    width: 140px;
 }
+.navbar-toggler{
+  border: 2px solid #5889B0;
+
+}
+
 .nav-icons{
   display: flex;
   justify-content: center;
@@ -93,6 +98,7 @@ export default {
   }
   .nav-link{
     margin-top: 10px;
+    color: #61a8e2;
   }
   .offcanvas{
     width: 300px;

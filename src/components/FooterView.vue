@@ -6,7 +6,7 @@
             <img class="driveLogo"  src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png" alt="">
         </div>
         <div>
-            <h3 class="footH">Links</h3>
+            <h3 class="footH mt-5">Links</h3>
             <router-link v-if="$cookies.get('jwt')" to="/home" class="nav-link">Home</router-link>
             <router-link to="/about" class="nav-link">About</router-link>
             <router-link to="/contact" class="nav-link">Contact</router-link>
@@ -28,7 +28,7 @@
             <br><br>
         </div>
     </div>
-<p class="copyNexa">Drive Nexa&copy{{currYear}}</p>
+<p class="copyNexa pb-3">Drive Nexa&copy{{currYear}}</p>
 </footer>
 </template>
 <script>
