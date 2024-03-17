@@ -45,9 +45,15 @@ export default {
 }
 </script>
 <style scoped>
+.bodBack{
+    background-color: #040B13;
+   width: auto;
+   color: #D9D9D9;
+}
+
 .adminNexa{
     min-height: 100vh;
-    display: grid;
+    /* display: grid; */
     place-items: center;
     padding: 0;
 
@@ -61,7 +67,11 @@ export default {
     
 }
 .tableTop{
-    padding-top:80px
+    padding-top:80px;
+  font-size: 60px;
+  font-weight:bold;
+  color: #D9D9D9;
+
 }
 img{
     width: 70px;

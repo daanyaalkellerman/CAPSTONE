@@ -22,11 +22,6 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   },
   {
-    path: '/products',
-    name: 'products',
-    component: () => import('../views/ProductView.vue')
-  },
-  {
     path: '/cart',
     name: 'cart',
     component: () => import('../views/CartView.vue')
@@ -45,6 +40,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: () => import('../views/ProfileView.vue')
+  },
+  {
+    path: '/product',
+    name: 'product',
+    component: () => import('../views/SingleView.vue')
   }
 ]
 

@@ -181,6 +181,9 @@ height: auto;
   @media screen and (max-width: 480px) and (min-width: 400px) {
     .headNexa{
       font-size: 55px;}
+      .headNexaa{
+  font-size: 30px;
+}
       .footNexa{
         gap: 40px;
       }
@@ -188,7 +191,15 @@ height: auto;
   }
   @media (max-width:400px) {
     .headNexa{
-    font-size: 30px;}
+    font-size: 40px;
+  margin-bottom: -60px;
+  }
+    .headNexaa{
+  font-size: 20px;
+}
+.prod{
+  font-size: 25px;
+}
     .carNexa{
       min-height: 40vh;
       display: grid;

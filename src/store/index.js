@@ -43,27 +43,51 @@ export default createStore({
       let res = (await axios.get(`${url}/users`)).data
       commit('setUser',res)
     },
-     deleteUser ({commit},userID){
-      try{
-        axios.delete(`${url}/users/${userID}`)
-        sweet({
-          title: 'Success',
-          icon:'success',
-          text:'User deleted successfuly',
-          timer:40000
-          
+    deleteUser ({commit},userID){
+     try{
+       axios.delete(`${url}/users/${userID}`)
+       sweet({
+         title: 'Success',
+         icon:'success',
+         text:'User deleted successfuly',
+         timer:40000
+         
+       })
+       window.location.reload()
+     }catch(e){
+       sweet({
+         title:'Error',
+         icon:'error',
+         text:'Failed to delete user',
+         timer: 4000
+       })
+   
+     }
+   },
+    deleteMyUser ({commit},userID){
+     try{
+       axios.delete(`${url}/users/${userID}`)
+       let cookies = $cookies.keys()
+       $cookies.remove('jwt')
+       sweet({
+         title: 'Success',
+         icon:'success',
+         text:'User deleted successfuly',
+         timer:40000
+         
         })
-        window.location.reload()
+        window.location.assign('/')
       }catch(e){
         sweet({
-          title:'Error',
-          icon:'error',
-          text:'Failed to delete user',
-          timer: 4000
-        })
-    
-      }
-    },
+         title:'Error',
+         icon:'error',
+         text:'Failed to delete user',
+         timer: 4000
+       })
+       window.location.reload()
+   
+     }
+   },
     async createUser ({commit},newUser){
       try{
         let {data} = await axios.post(url + '/users', newUser)
@@ -102,7 +126,7 @@ export default createStore({
           text:'Failed to edit user',
           timer:40000
         })
-       
+        window.location.reload()
       }
     },
     async getProducts({commit}){
