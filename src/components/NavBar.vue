@@ -4,7 +4,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button> 
-        <span class="name animate__animated animate__backInDown"><img class="driveLogo" src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png"></span>
+        <span class="name animate__animated animate__backInDown"><router-link to="/home"><img class="driveLogo" src="https://i.postimg.cc/RZbKphVJ/Screenshot-2024-03-05-142157.png"></router-link></span>
        <span class="nav-icons mx-3"><router-link v-if="$cookies.get('jwt')"to="/cart"> <i class="fa fa-cart-shopping " id="cart"></i></router-link>
        <router-link  v-if="$cookies.get('jwt')" to="/profile"><i class="fa fa-user" id="cart"></i></router-link></span>
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
@@ -18,9 +18,6 @@
                 <router-link v-if="!$cookies.get('jwt')"  to="/" class="nav-link">SignUp</router-link>
               </li>
             <li class="nav-item">
-                <router-link v-if="$cookies.get('jwt')"  to="/profile" class="nav-link">Profile</router-link>
-              </li>
-            <li class="nav-item">
                 <router-link v-if="!$cookies.get('jwt')" to="/login" class="nav-link">Login</router-link>
               </li>
             <li class="nav-item">
@@ -28,9 +25,6 @@
             </li>
             <li class="nav-item">
                 <router-link to="/about" class="nav-link">About</router-link>
-            </li>
-            <li class="nav-item">
-                <router-link v-if="$cookies.get('jwt')"  to="/products" class="nav-link">Products</router-link>
             </li>
             <li class="nav-item"   >
                 <router-link to="/contact" class="nav-link">Contact</router-link>

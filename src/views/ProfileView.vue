@@ -4,19 +4,22 @@
         <div class="single">
            <div class="container p-0 justify-content-center">
                 <div class=" justify-content-center">
-                    <div class=" prof">
+                    <div class="container prof">
                         <div class="card text-center sidebar">
                             <div class="card-body">
                                 <img :src=user.userUrl alt="" class="my-4">
                                 <div class="card-text">
                                     <h3 class="my-4">{{user.firstName}} {{user.lastName}}</h3>
-                              
-                                    <a @click="logout" class="logBut bg-white my-3 p-2 px-5" >Log Out</a>
+                                    <div class="but"> 
+                                    <a @click="deleteMyUser(user.userID)" class="logBut bg-white my-3 p-2 px-5" style="border:1px solid #040B13">Delete </a>
+                                    <a @click="logout" class="logBut bg-white my-3 p-2 px-5"style="border:1px solid #040B13" >Log Out</a>
+                                </div>
+                                  
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="about">
+                    <div class="container about">
                         <div class="inputs">
                             <h1>Profile</h1>
                             <form autocomplete="off" @submit.prevent="editUser" method="POST">
@@ -43,6 +46,8 @@
    </body>
 </template>
 <script>
+import { loadRouteLocation } from 'vue-router';
+
 export default {
     created(){
         const Profiler = $cookies.get('user');
@@ -68,7 +73,13 @@ export default {
       }
    },
     mounted() {
-      this.$store.dispatch('getUser')
+      this.$store.dispatch('getUsers')
+    },
+    methods: {
+        deleteMyUser(userID){
+        this.$store.dispatch('deleteMyUser',userID)
+       
+      },
     },
 }
 </script>
@@ -88,12 +99,14 @@ export default {
     justify-content: center;
     align-items: center;
     display: flex;
-    flex-direction: column;
     /* overflow-x: hidden; */
     padding-top: 100px;
     min-height: 120vh;
+    
 }
-
+form{
+    width: 100%;
+}
 .card{
     max-width: 100%;
 }
@@ -113,13 +126,14 @@ export default {
 
 .logOut{
     margin-top: 30px !important;
+    border: 1px solid #040B13;
 }
 
 .about{
     max-width: 100%;
 }
 .inputs{
-    width: 300px;
+    width: 100%;
 }
 
 .aboutRow{
@@ -140,12 +154,12 @@ export default {
             text-align: center;
             text-decoration: none;
             max-width: 100px !important;
-            color: rgb(0, 0, 0);
+            color: #040B13;
         }
 
         .logBut:hover{
             cursor: pointer;
-            color: rgb(0, 0, 0);
+            color: #040B13;
            opacity: 90%;
         }
 

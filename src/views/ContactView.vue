@@ -4,7 +4,14 @@
         
         <div class="contact">
         <div class="info">
-            <h3 class="infoH">CONTACT US</h3>
+            <h5 class="infoH">Address:</h5>
+            <p class="address">235 Laneden Road, Cape Town. Western Cape 7798</p>
+        <BR/>
+            <h5 class="infoH">Contact Us:</h5>
+            <p class="address">021 243 5463</p>
+        <BR/>
+            <h5 class="infoH">Disclaimer:</h5>
+            <p class="address">Most cars will be one time payments contact us for more details.</p>
         </div>
         <form class="form">
  <div class="group">
@@ -41,6 +48,9 @@ export default {
     justify-content: center;
     width:700px;
     height:60vh;
+}
+.address{
+    font-size: 13px;
 }
 .msg{
     text-align: left;
@@ -190,12 +200,19 @@ label {
     color: white;
 }
 @media (min-width: 720px) and (max-width:1080px) {
+    .address{
+        font-size: 10px;
+    }
     .contact{
         width:600px;
         height:50%;
     }
     .info{
         width: 50%px;
+        padding: 10px;
+    }
+    .infoH{
+        font-size: 17px
     }
     .form{
         gap:40px
@@ -215,6 +232,7 @@ label {
 }
 }
 @media (min-width:600px) and (max-width:720px) {
+    
     .contact{
         width:600px;
         height:50%;
@@ -240,13 +258,18 @@ label {
 }
 }
 @media (min-width:300px) and (max-width:600px) {
-
+    .address{
+    font-size: 8px;
+}
      .contact{
         width:100%;
         height:40%;
     }
     .info{
         width: 80%;
+    }
+    .infoH{
+        padding: 0;
     }
     .form{
         gap:20px;

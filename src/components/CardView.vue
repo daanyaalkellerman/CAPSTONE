@@ -27,7 +27,7 @@
         <div class="container-fluid cardsb">
           
           <div class="card1" v-for="product in searchFun() || sortBtn()" :key="product.prodID">
-             <div class="image"><img :src=product.prodUrl alt="" id="img"></div>
+             <div class="image"><router-link to="/product"><img :src=product.prodUrl alt="" id="img"></router-link></div>
               <div class="content">
                   <span class="title">
                     {{product.prodName}}
@@ -40,7 +40,6 @@
                 </p>     
    
             <p class="action">
-              <router-link class="viewM" to="">View More</router-link>
             R{{product.price}}
             </p>
             
@@ -181,11 +180,12 @@ place-items:center;
   
   .content {
     padding: 1.1rem;
-    margin-top:10px ;
+    margin-top:2px ;
   }
   .category{
     margin: 0;
     font-style: italic;
+    font-size: 14px;
     color: #D9D9D9;
   }
   
@@ -202,7 +202,7 @@ max-height: 160px;
   }
   .title {
     color: #D9D9D9;
-    font-size: 1.125rem;
+    font-size: 1.425rem;
     line-height: 1.75rem;
     font-weight: 600;
   }
@@ -210,8 +210,9 @@ max-height: 160px;
   .desc {
     margin-top: 0.5rem;
     color: #D9D9D9;
-    font-size: 0.875rem;
-    min-height: 105px;
+    font-size: 0.835rem;
+    text-align: left;
+    height: 110px;
   }
   
   .action {
@@ -248,8 +249,9 @@ max-height: 160px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    text-align: left;
     gap: 30px;
-    padding: 2rem;
+    padding: 0.1rem;
    
   }
   .paste-button {
@@ -315,7 +317,7 @@ max-height: 160px;
   display: block;
 }
 .searchsort{
-  padding: 50px;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

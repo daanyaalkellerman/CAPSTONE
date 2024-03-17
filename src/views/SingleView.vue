@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-6 my-4">
                 <div class="card">
-                <img src="" alt="" class="card-img-top w-100" style="max-height: 320px;">
+                <img src="https://iili.io/JW1yDog.jpg" alt="" class="card-img-top w-100" style="max-height: 320px;">
               </div>
                 </div>
                 <div class="col-lg-6 my-4">
@@ -13,8 +13,7 @@
                 <p>description</p> 
                 <div class="row mx-4">
                     <button class="col-6 price">price</button>
-                    <button class="btn btn-success my-5 buy col-6" >@click="addToCart(product.id)</button>
-                    <button class="col-6 contract my-5 btn btn-secondary">Contract</button>
+                    <button class="btn btn-success my-5 buy col-6" >addToCart</button>
                 </div>
                 </div>
             </div>
@@ -28,11 +27,15 @@ export default {
 }
 </script>
 <style scoped>
+.single{
+    padding-top: 80px;
+    margin-bottom: 50px;
+}
     .bodBack{
     background-color: #040B13;
-    height: 100vh;
+    height: 85vh;
    width: auto;
-   color: white;
+   color: #d9d9d9;
 }
 .card{
     max-width: 500px;
@@ -40,9 +43,9 @@ export default {
 
 .buy{
     padding: 10px;
-    border: 2px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
-    background-color: rgb(16, 114, 16);
+    border: 2px solid #d9d9d9;
+    color: #d9d9d9;
+    background-color: #5889B0;
 }
 
 .title{
@@ -54,10 +57,20 @@ export default {
     font-size: 26px;
     background: transparent;
     border: 0px;
-    color: rgb(16, 114, 16);
+    color: #5889B0;
     cursor: default !important;
 }
 
+@media (min-width:300px) and (max-width:430px) {
+    .title{
+    font-size: 50px;
+   font-weight: 600;
+}
+.single{
+    padding-top: 60px;
+   
+}
 
+}
 
 </style>
