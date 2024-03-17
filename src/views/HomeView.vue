@@ -1,10 +1,11 @@
 <template lang="">
     <body class="bodBack">
         <section class="carNexa">
-     <h1 class="headNexa">DRIVE NEXA<br>IGNITE YOUR <br>DRIVE</h1>  
+     <h1 class="headNexa">DRIVE NEXA</h1>  
+     <h3 class="headNexaa">IGNITE YOUR DRIVE</h3>
     </section>
     <section class="secNexa">
-        <h1>FEATURED PRODUCTS</h1>
+        <h1 class="prod">PRODUCTS</h1>
         
         <div class="container cardsb">
           <CardView/>
@@ -39,8 +40,22 @@ export default {
    color: #D9D9D9;
 }
 .headNexa{
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
     font-size: 70px;
-    text-shadow: 4px 5px 3px #1D2024;
+    text-shadow: 0px 0px 5px #9dacb9;
+    color: #040b1316;
+    margin-bottom: -150px;
+}
+.headNexaa{
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 0px 0px 5px #040B13;
+  color:#223b50c7;
+  font-size: 50px;
+  margin-top:-100px;
 }
 .carNexa{
    min-height: 93vh;
@@ -61,6 +76,12 @@ export default {
 .secNexa{
     padding-top: 3rem;
     text-align: center;
+}
+.prod{
+  font-style: OUTFIT;
+  font-size: 60px;
+  font-weight:bold;
+  color: #D9D9D9;
 }
 .card1 {
     max-width: 300px;
@@ -137,19 +158,19 @@ height: auto;
   }
   .viewM{
     margin:6% ;
-    height: 80px;
+    height: 60px;
     width: 200px;
     background-color: transparent;
     border: 3px solid #5889B0;
-    border-radius: 20px;
+    border-radius: 10px;
     color: #D9D9D9;
     font-size: 20px;
     
   }
   .viewM:hover{
     margin:5.65%;
-    height:90px;
-    width:250px;
+    height:65px;
+    width:230px;
     background-color: #5889B0;
     border: 3px solid #1D2024;
     border-radius: 15px;

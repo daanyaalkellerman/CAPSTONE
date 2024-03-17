@@ -28,6 +28,8 @@
                                 <input class="col-12 my-3 emailAdd" id="Price" type="text" v-model="user.emailAdd" required>
                                 <p>Profile Image</p>
                                 <input class="col-12 my-3" id="img" type="text" v-model="user.userUrl" required>
+                                <p>Password</p>
+                                <input class="col-12 my-3" id="img" type="text" v-model="user.userPass" required>
                                 <div class="modal-footer">
                                     <button  @click="this.$store.dispatch('editUser', user)" class="btn btn-dark" id="submit">Save Changes</button>
                                 </div>
@@ -53,7 +55,8 @@ export default {
             firstName:null,
             lastName:null,
             userEmail:null,
-            userProfile:null
+            userProfile:null,
+            userPass:null
         }
     },
    computed:{

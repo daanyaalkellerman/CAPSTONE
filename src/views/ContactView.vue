@@ -5,7 +5,6 @@
         <div class="contact">
         <div class="info">
             <h3 class="infoH">CONTACT US</h3>
-           <p>Inquiries</p>
         </div>
         <form class="form">
  <div class="group">
