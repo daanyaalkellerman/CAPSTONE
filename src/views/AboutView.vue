@@ -19,6 +19,13 @@ export default {
    width: auto;
    color: white;
 }
+.aboutH{
+    font-style: OUTFIT;
+  font-size: 60px;
+  font-weight:bold;
+  color: #D9D9D9;
+  margin-bottom: -100px;
+}
 .aboutWords{
     font-size: 20px;
 }
@@ -42,6 +49,9 @@ export default {
     .aboutWords{
         font-size:10px;
     }
+    .aboutH{
+  font-size: 40px;
+}
     
 }
 @media (min-width:420px) and (max-width:786px){

@@ -6,10 +6,10 @@
         <div class="info">
             <h5 class="infoH">Address:</h5>
             <p class="address">235 Laneden Road, Cape Town. Western Cape 7798</p>
-        <BR/>
+        <br/>
             <h5 class="infoH">Contact Us:</h5>
             <p class="address">021 243 5463</p>
-        <BR/>
+        <br/>
             <h5 class="infoH">Disclaimer:</h5>
             <p class="address">Most cars will be one time payments contact us for more details.</p>
         </div>
@@ -29,20 +29,149 @@
 <div class="group">
     <p class="text-secondary msg">Leave a Message</p>
   <textarea required type="text" class="inputM" data-label-message>
-
   </textarea>
 </div>
         </form>
         </div>
     </section>
+    <div class="container-fluid revs">
+<h2 class="heading animate__animated animate__fadeInDownBig text-uppercase fw-semibold">ANONYMOUS REVIEWS:</h2>
+<AddRev/>
+<div class="cards"  >
+    <div class="card overflow-hidden" v-for="rev in $store.state.Reviews" :key="rev.revID">
+        <div class="carder"> 
+            <h3 class="card-title animate__animated animate__fadeInUpBig animate__slow">{{rev.revHead}}</h3>
+            <div class="card-content animate__animated animate__fadeInUpBig ">
+                <p>{{rev.revDes}} </p>
+            </div>
+        </div>
+        <button @click="deleteRev(rev.revID)" class="delbtn">Delete</button>
+    </div>
+</div>
+</div>
 </body>
 </template>
 <script>
+import AddRev from '../components/AddRevmodel.vue';
 export default {
-    
+    components:{
+        AddRev
+    },
+    computed: {
+        Reviews(){
+       return this.$store.state.Reviews
+      },  
+    },
+    methods: {
+        deleteRev(revID){
+        this.$store.dispatch('deleteRev',revID)
+      },
+    },
+    mounted() {
+      this.$store.dispatch('reviews')
+    }
 }
 </script>
 <style scoped>
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 1em;
+    color: #d9d9d9;
+}
+.des{
+    padding: 10px;
+    color: #d9d9d9;
+}
+
+.revs{
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #D9D9D9;
+}
+.delbtn{
+    background-color: #5889B0;
+   padding: 4px 8px 4px;
+   width: 80px;
+   height: 30px;
+   font-size: 15px;
+    color: #D9D9D9;
+   border: 1px solid #040B13;
+   border-radius: 4px;
+}
+.cards {
+    display: flex;
+    text-align: left;
+    padding: 20px 0px;
+    list-style: none;
+    overflow-x: scroll;
+    -ms-scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 100%;
+    padding: 10px;
+    color: #040B13;
+    background: #D9D9D9;
+    border-radius: 4px;
+    height: 180px;
+    transition: all 0.2s;
+    border: none;
+}
+.card:hover{
+    transform: scale(1.0);
+    transition: all .4s ease-in-out;
+}
+
+.card .card-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.card .card-content {
+    margin: 10px 0;
+    max-width: 90%;
+    margin-left: 15px;
+    font-size: 12px;
+}
+.carder{
+    height: 100%;
+}
+img{
+    height: 90px;
+}
+
+@media (min-width: 500px) {
+    .card {
+        flex-basis: calc(50% - 10px);
+    }
+
+    .card:not(:last-child) {
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 700px) {
+    .card {
+        flex-basis: calc(calc(100% / 3) - 20px);
+    }
+
+    .card:not(:last-child) {
+        margin-right: 30px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .card {
+        flex-basis: calc(25% - 30px);
+    }
+
+    .card:not(:last-child) {
+        margin-right: 40px;
+    }
+}
 .contact{
     display: flex;
     justify-content: center;

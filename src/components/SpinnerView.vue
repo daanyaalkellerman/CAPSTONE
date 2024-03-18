@@ -10,13 +10,14 @@ export default {
     .loader {
   width: 53px;
   height: 53px;
-  border: 5px dotted #040B13;
+  border: 5px dotted #d9d9d9;
   border-style: solid solid dotted dotted;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   box-sizing: border-box;
   animation: rotation 2s linear infinite;
+  background-color: transparent;
 }
 
 .loader::after {
@@ -28,6 +29,7 @@ export default {
   top: 0;
   bottom: 0;
   margin: auto;
+  
   border: 4px dotted #5889B0;
   border-style: solid solid dotted;
   width: 30px;
