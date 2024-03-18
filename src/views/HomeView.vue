@@ -7,13 +7,12 @@
         </section>
     <section class="secNexa">
         <h1 class="prod">PRODUCTS</h1>
-        <div class="container cardsb" >
-          <div class="searchsort">
+<div class="container cardsb" >
+  <div class="searchsort">
   <div class="search">
     <div class="search-box">
       <div class="search-field">
         <input placeholder="Search..." class="input" type="text" v-model="search" @input="searchFun()">
-        
         <div class="search-box-icon">
           <button class="btn-icon-content">
             <i class="search-icon">
@@ -22,15 +21,10 @@
           </button>
         </div>
       </div>
-    </div>
-    
-  </div>
+    </div> 
+</div>
   <div class="paste-button">
   <button @click="sortBtn()" class="button" type="button">Paste  ▼</button>
-  <!-- <div class="dropdown-content">
-    <button @click="sortBtn()" id="top" >High to Low</button>
-    <button @click="sortBtn()" id="middle" >Low to High</button>
-  </div> -->
   </div>
 </div>
         <div class="container-fluid cardsb">
