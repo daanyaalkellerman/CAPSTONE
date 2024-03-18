@@ -17,12 +17,12 @@
                         <th>Delete</th>
                       </tr>
                     </thead>
-                    <tbody v-if="Products">
-                      <tr v-for="prod in $store.state.Products" :key="prod.prodID">
+                    <tbody v-if="cart">
+                      <tr v-for="prod in $store.state.cart" :key="prod.cartID">
                         <td data-label="Quantity">{{prod.quantity}}</td>
                         <td data-label="Product">{{prod.prodName}}</td>
                         <td data-label="Price">{{prod.price}}</td>
-                        <td data-label="Delete" ><button @click="deleteUser(prod.prodID)" class="delBtn">Del</button></td>
+                        <td data-label="Delete" ><button @click="deleteUser(prod.cartID)" class="delBtn">Del</button></td>
                       </tr>
                     </tbody>
                     <tbody v-else>
@@ -41,6 +41,11 @@ import SpinnerView from '../components/SpinnerView.vue';
 export default {
     components:{
         SpinnerView
+    },
+    computed:{
+      cart(){
+        return this.$store.state.Cart
+      }
     }
 }
 </script>
@@ -53,7 +58,7 @@ export default {
 
 .adminNexa{
     min-height: 100vh;
-    /* display: grid; */
+    /* display: grid;  */
     place-items: center;
     padding: 0;
 
@@ -95,7 +100,8 @@ img{
   }
   @media (max-width:600px){
     .tableTop{
-    padding-top:60px
+    padding-top:60px;
+    font-size:50px;
 }
     .table thead{
         display: none !important;

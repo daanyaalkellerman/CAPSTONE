@@ -9,9 +9,10 @@ const url = 'https://drive-nexa.onrender.com';
 export default createStore({
   state: {
     Products:[],
+    Product:null,
     Users: [],
     User:[],
-    reviews:[],
+    Reviews:[],
     cart:null,
     setloggedIn:false
   },
@@ -21,6 +22,9 @@ export default createStore({
     setProducts(state, data){
       state.Products = data
     },
+    setProduct(state, data){
+      state.Product = data
+    },
     setUsers(state, data){
       state.Users = data
     },
@@ -28,7 +32,7 @@ export default createStore({
       state.User = data
     },
     setReviews(state, data){
-
+      state.Reviews = data
     },
     setLoggedIn(state, data){
       state.loggedIn = data
@@ -132,6 +136,10 @@ export default createStore({
     async getProducts({commit}){
       let res = (await axios.get(`${url}/products`)).data
       commit('setProducts',res)
+    },
+    async getProduct(context,proD){
+      let res = (await axios.get(`${url}/products/${proD.id}`)).data
+      context.commit('setProduct',res[0])
     },
     async createProd({commit}, newProd){
       try{
@@ -264,8 +272,16 @@ export default createStore({
       }
     },
     async reviews({commit}){
-      let review = (await axios.get(`${url}/reviews`)).data
-      commit('setReviews',review)
+      let rev = (await axios.get(`${url}/reviews`)).data
+      commit('setReviews',rev)
+    },
+    async addRev({commit}, newRev){
+      let {data} = await axios.post(url + '/reviews', newRev)
+      window.location.reload()
+    },
+    deleteRev({commit},revID){
+      axios.delete(`${url}/reviews/${revID}`)
+      window.location.reload()
     }
   },
   modules: {
