@@ -35,13 +35,13 @@
         </div>
     </section>
     <div class="container-fluid revs">
-<h2 class="heading animate__animated animate__fadeInDownBig text-uppercase fw-semibold">ANONYMOUS REVIEWS:</h2>
+<h2 class="heading text-uppercase fw-semibold" data-aos="fade-down" data-aos-duration=1000>ANONYMOUS REVIEWS:</h2>
 <AddRev/>
-<div class="cards"  >
+<div class="cards" >
     <div class="card overflow-hidden" v-for="rev in $store.state.Reviews" :key="rev.revID">
         <div class="carder"> 
-            <h3 class="card-title animate__animated animate__fadeInUpBig animate__slow">{{rev.revHead}}</h3>
-            <div class="card-content animate__animated animate__fadeInUpBig ">
+            <h3 class="card-title" data-aos="fade-up" data-aos-duration=2000>{{rev.revHead}}</h3>
+            <div class="card-content " data-aos="fade-left" data-aos-duration=1000>
                 <p>{{rev.revDes}} </p>
             </div>
         </div>

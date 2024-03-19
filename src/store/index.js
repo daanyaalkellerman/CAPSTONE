@@ -13,7 +13,7 @@ export default createStore({
     Users: [],
     User:[],
     Reviews:[],
-    cart:null,
+    Cart:null,
     setloggedIn:false
   },
   getters: {
@@ -33,6 +33,9 @@ export default createStore({
     },
     setReviews(state, data){
       state.Reviews = data
+    },
+    setCart(state,data){
+      state.Cart = data
     },
     setLoggedIn(state, data){
       state.loggedIn = data
@@ -278,11 +281,51 @@ export default createStore({
       commit('setReviews',rev)
     },
     async addRev({commit}, newRev){
-      let {data} = await axios.post(url + '/reviews', newRev)
-      window.location.reload()
+      try{
+        let {data} = await axios.post(url + '/reviews', newRev)
+        sweet({
+          title:'Success',
+          icon:'success',
+          text:'Added your review',
+          timer:40000
+        })
+        window.location.reload('')
+      
+      }catch(e){
+        sweet({
+          title:'Error',
+          icon:'error',
+          text:'Error when adding your review',
+          timer:40000
+        })
+        window.location.reload(60000)
+      }
     },
     deleteRev({commit},revID){
-      axios.delete(`${url}/reviews/${revID}`)
+      try{
+        axios.delete(`${url}/reviews/${revID}`)
+        sweet({
+          title:'Success',
+          icon:'success',
+          text:'Deleted review',
+          timer:40000
+        })
+        window.location.reload(80000)
+      }catch(e){
+          sweet({
+            title:'Error',
+            icon:'error',
+            text:'Error when deleting review',
+            timer:40000
+          })
+      }
+    },
+   async displayCart({commit}){
+      let car = (await axios.get(`${url}/cart`)).data
+      commit('setCart',car)
+    },
+    async addToCart({commit}, addCart){
+      let {data} = await axios.post(url + '/cart', addCart)
       window.location.reload()
     }
   },

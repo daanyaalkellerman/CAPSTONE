@@ -17,7 +17,7 @@
           </form>
     </section> -->
       <section class="signup">
-        <form @submit.prevent='login' class="form" action="">
+        <form @submit.prevent='login' class="form animate__animated animate__zoomIn" action="">
             <span class="title">Login</span>
             <label for="email" class="label">Email</label>
             <input type="email" id="email" name="email" required="email" v-model="emailAdd" class="input">

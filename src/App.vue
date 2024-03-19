@@ -9,8 +9,14 @@
 <script>
    import NavBar from './components/NavBar.vue'
    import FooterView from './components/FooterView.vue'
+   import animate from 'animate.css'
+   import AOS from 'aos'
+   import 'aos/dist/aos.css';
 export default {
-    components:{NavBar,FooterView}
+    components:{NavBar,FooterView,animate,AOS},
+    mounted() {
+    AOS.init();
+  }
   }
 
 </script>

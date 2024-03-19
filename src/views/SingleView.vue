@@ -4,16 +4,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 my-2">
-                <div class="card">
-                <img :src="product.prodUrl" alt="" class="card-img-top" style="max-height: 300px;">
+                <div class="card animate__animated animate__lightSpeedInLeft">
+                <img :src="product.prodUrl" alt="" class="card-img-top " style="max-height: 300px;">
               </div>
                 </div>
                 <div class="col-lg-6 my-2">
-                   <h2 class="title">{{product.prodName}}</h2>
-                <p>{{product.prodDes}}</p> 
+                   <h2 class="title animate__animated animate__zoomInDown">{{product.prodName}}</h2>
+                <p class="animate__animated animate__zoomInUp animate__slow">{{product.prodDes}}</p> 
                 <div class="row mx-6">
-                    <button class="col-6 price">R{{product.price}}</button>
-                    <button class="btn btn-success my-5 buy col-4">addToCart</button>
+                    <button class="col-6 price animate__animated animate__tada animate__slow">R{{product.price}}</button>
+                    <button class="btn btn-success my-5 buy col-4 animate__animated animate__pulse">addToCart</button>
                 </div>
                 </div>
             </div>

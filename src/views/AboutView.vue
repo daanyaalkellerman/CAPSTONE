@@ -1,8 +1,8 @@
 <template lang="">
 <body class="bodBack">
     <section class="aboutNexa">
-        <h1 class="aboutH">ABOUT US</h1>
-    <p class="aboutWords">
+        <h1 class="aboutHe animate__animated animate__lightSpeedInRight animate__slow" >ABOUT US</h1>
+    <p class="aboutWords animate__animated animate__slideInUp">
      Welcome to Drive Nexa, where we have redefined the car-buying experience to make quality, reliable vehicles more affordable for everyone. We prioritize offering a diverse range of car models that combine reliability and performance without breaking the bank. Our commitment to transparency means you can explore detailed information about each model, from specifications to maintenance history, empowering you to make informed decisions. With a focus on customer satisfaction, we've streamlined the purchasing process, ensuring a hassle-free experience. Whether you're a first-time buyer or looking to upgrade, our affordable options cater to various budgets, allowing you to drive away in a dependable vehicle that meets your needs. Experience the future of car buying, where affordability meets reliability, only at Drive Nexa.
     </p>    
     </section>
@@ -19,7 +19,7 @@ export default {
    width: auto;
    color: white;
 }
-.aboutH{
+.aboutHe{
     font-style: OUTFIT;
   font-size: 60px;
   font-weight:bold;
