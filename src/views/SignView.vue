@@ -53,7 +53,7 @@ export default {
 }
 
 .signup{
-    min-height:  95vh;
+    min-height:  100vh;
     display: grid;
     place-items: center;
     padding: 6rem;
@@ -135,6 +135,7 @@ export default {
     display: grid;
     place-items: center;
     padding: 0.5rem;
+    padding-top:80px;
     
     background-image: url(https://i.postimg.cc/nrFmZRZj/itl-cat-wallpaper-de-carros-3153463-1.jpg);
     background-size: cover;

@@ -45,7 +45,7 @@
                 <p>{{rev.revDes}} </p>
             </div>
         </div>
-        <button @click="deleteRev(rev.revID)" class="delbtn">Delete</button>
+        <button v-if="$cookies.get('userRole')==='admin'" @click="deleteRev(rev.revID)" class="delbtn">Delete</button>
     </div>
 </div>
 </div>
