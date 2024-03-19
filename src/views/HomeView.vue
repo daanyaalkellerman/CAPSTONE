@@ -27,7 +27,7 @@
   <button @click="sortBtn()" class="button" type="button">Paste  ▼</button>
   </div>
 </div>
-        <div class="container-fluid cardsb" >
+        <div class="container-fluid cardsb mt-4" >
           
           <div class="card1" v-for="product in searchFun() || sortBtn()" :key="product.prodID" data-aos="fade-up" data-aos-duration=1000>
            <router-link :to="{ name: 'single', params:{id:product.prodID}}" ><div class="image"><img :src="product.prodUrl" :alt="product.prodName" id="img" ></div></router-link>
@@ -250,7 +250,7 @@ max-height: 167px;
     text-align: left;
     gap: 30px;
     padding: 0.1rem;
-   
+   padding-bottom:20px
   }
   .paste-button {
   position: relative;

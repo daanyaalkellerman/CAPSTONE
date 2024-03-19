@@ -338,9 +338,9 @@ export default createStore({
         window.location.reload(60000)
       }
     },
-    deleteRev({commit},revID){
+   async deleteRev({commit},revID){
       try{
-        axios.delete(`${url}/reviews/${revID}`)
+        await axios.delete(`${url}/reviews/${revID}`)
         sweet({
           title:'Success',
           icon:'success',
@@ -375,7 +375,7 @@ export default createStore({
       window.location.reload()
     },
     async deleteItem({commit},cartID){
-      axios.delete()
+      await axios.delete(`${url}/cartID/${cartID}`)
     }
   },
   modules: {
