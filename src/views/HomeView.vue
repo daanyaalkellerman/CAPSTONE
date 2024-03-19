@@ -38,10 +38,6 @@
                   <p class="category">
                     Category: {{product.category}}   
                   </p>
-                <p class="desc">
-                {{product.prodDes}}
-                </p>     
-   
             <p class="action">
             R{{product.price}}
             </p>
@@ -183,8 +179,8 @@ place-items:center;
   color:black;
 }
     .card1 {
-    width: 300px;
-    height: 380px;
+    width: 250px;
+    height:250px;
     border-radius: 8px;
     background-color: #1D2024;
     box-shadow: 0px 3px 3px 1px  rgba(255 , 255 , 255,0.35);
@@ -196,8 +192,7 @@ place-items:center;
   }
   
   .content {
-    padding: 1.1rem;
-    margin-top:2px ;
+    padding: 0.5rem;
   }
   .category{
     margin: 0;
@@ -209,13 +204,13 @@ place-items:center;
   .image {
     object-fit: cover;
     width: 100%;
-    height: 150px;
+    height: 167px;
     background-color: #D9D9D9;
 
   }
   #img{
 width: 100%;
-max-height: 160px;
+max-height: 167px;
   }
   .title {
     color: #D9D9D9;
@@ -243,23 +238,9 @@ max-height: 160px;
     justify-content: end;
     padding:1px 8px;
     border-radius: 4px;
+    line-height: 1.75rem;
+  }
 
-   
-  }
-  .viewM{
-    color: rgb(212, 23, 23);
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 0.880rem;
-  }
-  
-  .action span {
-    transition: .3s ease;
-  }
-  
-  .action:hover span {
-    transform: translateX(4px);
-  }
   
   .cardsb{
     display: flex;
@@ -338,6 +319,20 @@ max-height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media (min-width:1024px) {
+  .card1{
+    width: 300px;
+    height: 300px;
+  }
+  .image{
+    width: 100%;
+
+  }
+  img{
+    width: 100%;
+    
+  }
 }
 @media (min-width:300px) and (max-width:430px) {
   .paste-button {
@@ -467,14 +462,14 @@ max-height: 160px;
   }
   
   .content {
-    padding: 1.1rem;
-    margin-top:20px ;
+    padding: 0.5rem;
+    margin-top:1px ;
   }
   
   .image {
     object-fit: cover;
     width: 100%;
-    height: 150px;
+    height: auto;
     background-color: #Ddd;
 
   }
@@ -499,7 +494,6 @@ height: auto;
   
   .action {
     display: flex;
-
     color: #5889B0;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -508,6 +502,7 @@ height: auto;
     justify-content: end;
     padding: 4px 8px;
     border-radius: 4px;
+    margin-top: 22px;
 
   }
   
@@ -527,28 +522,7 @@ height: auto;
     gap: 37px;
     margin-top: 6%;
   }
-  .viewM{
-    margin:6% ;
-    height: 60px;
-    width: 200px;
-    background-color: transparent;
-    border: 3px solid #5889B0;
-    border-radius: 10px;
-    color: #D9D9D9;
-    font-size: 20px;
-    
-  }
-  .viewM:hover{
-    margin:5.65%;
-    height:65px;
-    width:230px;
-    background-color: #5889B0;
-    border: 3px solid #1D2024;
-    border-radius: 15px;
-    color: black;
-    font-size: 25px;
-    transition: 0.95s;
-  }
+
   @media screen and (max-width: 480px) and (min-width: 400px) {
     .headNexa{
       font-size: 55px;}
@@ -593,14 +567,14 @@ height: auto;
   }
   
   .content {
-    padding: 1.1rem;
+    padding: 0.5rem;
     margin-top:20px ;
   }
   
   .image {
     object-fit: cover;
     width: 100%;
-    height: 150px;
+    height: auto;
     background-color: #Ddd;
 
   }
