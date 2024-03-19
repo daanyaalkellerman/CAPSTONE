@@ -42,6 +42,14 @@ export default createStore({
     }
   },
   actions: {
+    //THE USER
+
+
+
+
+
+
+
     async getUsers({commit}){
         let res = (await axios.get(`${url}/users`)).data;
         commit('setUsers', res)   
@@ -138,6 +146,15 @@ export default createStore({
         window.location.reload()
       }
     },
+    //THE PRODUCTS
+
+
+
+
+
+
+
+
     async getProducts({commit}){
       let res = (await axios.get(`${url}/products`)).data
       commit('setProducts',res)
@@ -205,6 +222,17 @@ export default createStore({
         })
       }
     },
+
+
+
+
+    //THE LOGIN
+
+
+
+
+
+
     async signUser ({commit},sign){
       try{
         let {data} = await axios.post(url + '/users', sign)
@@ -276,6 +304,15 @@ export default createStore({
         })
       }
     },
+
+
+
+
+    //THE REVIEWS
+
+
+
+
     async reviews({commit}){
       let rev = (await axios.get(`${url}/reviews`)).data
       commit('setReviews',rev)
@@ -320,6 +357,15 @@ export default createStore({
           })
       }
     },
+
+
+
+
+    //THE CART
+
+
+
+
    async displayCart({commit}){
       let car = (await axios.get(`${url}/cart`)).data
       commit('setCart',car)
@@ -327,6 +373,9 @@ export default createStore({
     async addToCart({commit}, addCart){
       let {data} = await axios.post(url + '/cart', addCart)
       window.location.reload()
+    },
+    async deleteItem({commit},cartID){
+      axios.delete()
     }
   },
   modules: {
