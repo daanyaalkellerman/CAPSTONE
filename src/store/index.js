@@ -57,7 +57,7 @@ export default createStore({
          timer:40000
          
        })
-       window.location.reload()
+       window.location.reload(40000)
      }catch(e){
        sweet({
          title:'Error',

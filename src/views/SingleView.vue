@@ -37,19 +37,20 @@ export default {
 <style scoped>
 .bodBack{
     background-color: #040B13;
-    height: 110vh;
+    min-height: 100vh;
     width: auto;
     color: #d9d9d9;
 }
 
-.col-lg
+
 .single{
-    padding-top: 80px;
-    margin-bottom: 50px;
+
+    padding-top: 250px;
+    /* margin-bottom: 0px; */
 
 }
 .card{
-    max-width: 300px;
+    width: auto;
 }
 
 .buy{
@@ -95,6 +96,20 @@ p{
     background-color: #5889B0;
     font-size:14px;
 }
+}
+@media (width:768px) {
+    .single{
+    padding-top: 80px;
+    width:auto;
+}
+.card{
+    width: 500px;
+}
+}
+@media (width:1440px){
+    .single{
+        padding-top: 380px;
+    }
 }
 
 </style>
