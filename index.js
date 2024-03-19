@@ -33,6 +33,6 @@ app.use('/users',userRouter)
 app.use('/products',prodRouter)
 app.use('/cart',cartRouter)
 
-app.listen(PORT, ()=>{
-    console.log('http://localhost:' + PORT);
+app.listen( PORT, ()=>{
+    console.log(`http://localhost: ${PORT}`);
 })
