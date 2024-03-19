@@ -73,6 +73,8 @@ export default createStore({
        axios.delete(`${url}/users/${userID}`)
        let cookies = $cookies.keys()
        $cookies.remove('jwt')
+       $cookies.remove('user')
+       $cookies.remove('userRole')
        sweet({
          title: 'Success',
          icon:'success',
