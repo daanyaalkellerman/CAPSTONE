@@ -1,7 +1,7 @@
 <template lang="">
     <body class="bodBack">
       <section class="signup">
-        <form @submit.prevent="signin" class="form">
+        <form @submit.prevent="signin" class="form animate__animated animate__zoomIn">
             <span class="title">Register</span>
             <label for="firstname" class="label">First Name</label>
             <input type="text" id="firstname" name="firstname" v-model="firstName" required="" class="input">

@@ -6,8 +6,8 @@
           </video>
         </section>
     <section class="secNexa">
-        <h1 class="prod">PRODUCTS</h1>
-<div class="container cardsb" >
+        <h1 class="prod animate__animated animate__zoomInDown animate__slow">PRODUCTS</h1>
+<div class="container cardsb" data-aos="fade-down" data-aos-duration=2000>
   <div class="searchsort">
   <div class="search">
     <div class="search-box">
@@ -27,9 +27,9 @@
   <button @click="sortBtn()" class="button" type="button">Paste  ▼</button>
   </div>
 </div>
-        <div class="container-fluid cardsb">
+        <div class="container-fluid cardsb" >
           
-          <div class="card1" v-for="product in searchFun() || sortBtn()" :key="product.prodID">
+          <div class="card1" v-for="product in searchFun() || sortBtn()" :key="product.prodID" data-aos="fade-up" data-aos-duration=1000>
            <router-link :to="{ name: 'single', params:{id:product.prodID}}" ><div class="image"><img :src="product.prodUrl" :alt="product.prodName" id="img" ></div></router-link>
               <div class="content">
                   <span class="title">
