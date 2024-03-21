@@ -19,6 +19,15 @@ export default createStore({
   getters: {
   },
   mutations: {
+    sortPrice: (state) => {
+      state.Products.sort((a, b)=> {
+        return a.price - b.price;
+      })
+      if(!state.asc) {
+        state.Products.reverse()
+      }
+      state.asc =!state.asc
+    },
     setProducts(state, data){
       state.Products = data
     },
@@ -366,8 +375,8 @@ export default createStore({
 
 
 
-   async displayCart({commit}){
-      let car = (await axios.get(`${url}/cart`)).data
+   async displayCart({commit}, userID){
+      let car = (await axios.get(`${url}/cart/${userID}`)).data
       commit('setCart',car)
     },
     async addToCart({commit}, addCart){

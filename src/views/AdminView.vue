@@ -2,19 +2,20 @@
     <body class="bodBack">
       <section class="adminNexa">
         <div>
-            <h2 class="tableTop">Users</h2>
+          <h2 class="tableTop">Users</h2> 
           <AddUserModel/>
         </div>
         <!-- USER TABLE -->
+        <AdminGuide/>
         <div class="container" >
-            <div class="row">
-              <div class="col">
-                <div class="table crud-table">
-                  <table class="table align-middle container-sm table-bordered" >
-                    <thead class="thead">
-                      <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+          <div class="row">
+            <div class="col">
+              <div class="table crud-table">
+                <table class="table align-middle container-sm table-bordered" >
+                  <thead class="thead">
+                    <tr>
+                      <th>First Name</th>
+                      <th>Last Name</th>
                         <th>Age</th>
                         <th>Email</th>
                         <th>Role</th>
@@ -89,6 +90,7 @@ import AddUserModel from '../components/AddUsermodel.vue';
 import EditUserModel from '../components/EditUsermodal.vue';
 import AddProdModel from '../components/AddProdmodel.vue';
 import EditProdModel from '../components/EditProdmodel.vue';
+import AdminGuide from '../components/AdminGuide.vue';
 export default {
   data() {
     return {
@@ -111,7 +113,7 @@ export default {
    
   },
     components:{
-      SpinnerView,AddUserModel,EditUserModel,AddProdModel,EditProdModel
+      SpinnerView,AddUserModel,EditUserModel,AddProdModel,EditProdModel,AdminGuide
     },
     computed:{
       Users(){
@@ -158,6 +160,7 @@ export default {
     display: flex;
     gap: 60px;
 }
+
 .adminNexa{
     min-height: 100vh;
     /* display: grid;
