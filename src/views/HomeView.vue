@@ -12,7 +12,7 @@
   <div class="search">
     <div class="search-box">
       <div class="search-field">
-        <input placeholder="Search..." class="input" type="text" v-model="search" @input="searchFun()">
+        <input placeholder="Enter name or category" class="input" type="text" v-model="search" @input="searchFun()">
         <div class="search-box-icon">
           <button class="btn-icon-content">
             <i class="search-icon">
@@ -24,12 +24,12 @@
     </div> 
 </div>
   <div class="paste-button">
-  <button @click="sortBtn()" class="button" type="button">Paste  ▼</button>
+  <button @click="sortPrice" class="button" type="button">Sort by price</button>
   </div>
 </div>
         <div class="container-fluid cardsb mt-4" >
           
-          <div class="card1" v-for="product in searchFun() || sortBtn()" :key="product.prodID" data-aos="fade-up" data-aos-duration=1000>
+          <div class="card1" v-for="product in searchFun()" :key="product.prodID" data-aos="fade-up" data-aos-duration=1000>
            <router-link :to="{ name: 'single', params:{id:product.prodID}}" ><div class="image"><img :src="product.prodUrl" :alt="product.prodName" id="img" ></div></router-link>
               <div class="content">
                   <span class="title">
@@ -88,13 +88,9 @@ export default {
       });
       return found
     },
-    sortBtn(){
-      let product = this.$store.state.Products
-      if(product){
-        product.sort((a, b) => a.price < b.price || b.price < a.price)
-      }
-    }
-
+        sortPrice() {
+            this.$store.commit("sortPrice")
+        }
   },
 }
 </script>
@@ -107,7 +103,7 @@ place-items:center;
 
 .search-box {
   max-width: 400px;
-  min-width:  100px;
+  min-width:  250px;
   height: 35px;
   border: 2px solid #5889B0;
   border-radius: 5px;
@@ -134,7 +130,7 @@ place-items:center;
   height: 100%;
   border: 0;
   border-color: #5889B0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding-right: 0px;
   color: #D9D9D9;
   background: transparent;
@@ -269,53 +265,10 @@ max-height: 167px;
   cursor: pointer;
 }
 
-.dropdown-content {
-  display: none;
-  font-size: 13px;
-  position: absolute;
-  z-index: 1;
-  min-width: 200px;
-  background-color: transparent;
-  border: 2px solid #5889B0;
-  border-radius: 5px; 
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-  color: #D9D9D9;
-  padding: 8px 10px;
-  text-decoration: none;
-  display: block;
-  transition: 0.1s;
-}
-
-.dropdown-content a:hover {
-  background-color: #5889B0;
-  color: #D9D9D9;
-}
-
-.dropdown-content a:focus {
-  background-color: #1D2024;
-  color: #D9D9D9;
-}
-
-.dropdown-content #top:hover {
-  border-radius: 5px;
-}
-
-.dropdown-content #bottom:hover {
-  border-radius: 5px;
-}
-
-.paste-button:hover button {
-  border-radius: 5px;
-}
-
 .paste-button:hover .dropdown-content {
   display: block;
 }
 .searchsort{
-  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -342,60 +295,15 @@ max-height: 167px;
 .button {
   background-color: transparent;
   color: #D9D9D9;
-  padding: 5px 15px;
-  font-size: 10px;
+  padding: 9px 15px;
+  font-size: 8px;
   font-weight: bold;
   border: 2px solid #5889B0;
-  border-radius: 15px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.dropdown-content {
-  display: none;
-  font-size: 13px;
-  position: absolute;
-  z-index: 1;
-  min-width: 100px;
-  background-color: transparent;
-  border: 2px solid #5889B0;
-  border-radius: 0px 15px 15px 15px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
 
-.dropdown-content a {
-  color: #D9D9D9;
-  padding: 8px 10px;
-  width:20px;
-  text-decoration: none;
-  display: block;
-  transition: 0.1s;
-}
-
-.dropdown-content a:hover {
-  background-color: #5889B0;
-  color: #D9D9D9;
-}
-
-.dropdown-content a:focus {
-  background-color: #1D2024;
-  color: #D9D9D9;
-}
-
-.dropdown-content #top:hover {
-  border-radius: 0px 13px 0px 0px;
-}
-
-.dropdown-content #bottom:hover {
-  border-radius: 0px 0px 13px 13px;
-}
-
-.paste-button:hover button {
-  border-radius: 15px 15px 0px 0px;
-}
-
-.paste-button:hover .dropdown-content {
-  display: block;
-}
 }
 
 .bodBack{
@@ -403,22 +311,6 @@ max-height: 167px;
     height: 100%;
    width: auto;
    color: #D9D9D9;
-}
-.headNexa{
-  font-family: "Racing Sans One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-    font-size: 50px;
-    text-shadow: 0px 0px 5px #9dacb9;
-    color: #040b1316;
-}
-.headNexaa{
-  font-family: "Racing Sans One", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  text-shadow: 0px 0px 5px #040B13;
-  color:#223b50c7;
-  font-size: 50px;
 }
 .carNexa{
    max-height: 100vh;
