@@ -13,7 +13,7 @@
             <h5 class="infoH">Disclaimer:</h5>
             <p class="address">Most cars will be one time payments contact us for more details.</p>
         </div>
-        <form class="form">
+        <form class="form" action="https://formspree.io/f/mgejrovj" method="POST">
  <div class="group">
   <input required="" type="text" class="input">
   <span class="highlight"></span>
