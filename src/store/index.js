@@ -13,7 +13,7 @@ export default createStore({
     Users: [],
     User:[],
     Reviews:[],
-    Cart:null,
+    Cart:[],
     setloggedIn:false
   },
   getters: {
