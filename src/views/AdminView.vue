@@ -1,4 +1,4 @@
-<template lang="">
+  <template lang="">
     <body class="bodBack">
       <section class="adminNexa">
         <div>

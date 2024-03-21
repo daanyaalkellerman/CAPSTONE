@@ -11,17 +11,19 @@
                   <table class="table align-middle container-sm table-bordered" >
                     <thead class="thead">
                       <tr>
-                        <th>Quantity</th>
+                        <th>Image</th>
                         <th>Product</th>
                         <th>Price</th>
+                        <th>Quantity</th>
                         <th>Delete</th>
                       </tr>
                     </thead>
                     <tbody v-if="cart">
                       <tr v-for="prod in $store.state.cart" :key="prod.cartID">
-                        <td data-label="Quantity">{{prod.quantity}}</td>
+                        <td data-label="Product">{{prod.prodUrl}}</td>
                         <td data-label="Product">{{prod.prodName}}</td>
                         <td data-label="Price">{{prod.price}}</td>
+                        <td data-label="Quantity">{{prod.quantity}}</td>
                         <td data-label="Delete" ><button @click="deleteUser(prod.cartID)" class="delBtn">Del</button></td>
                       </tr>
                     </tbody>
@@ -46,7 +48,13 @@ export default {
       cart(){
         return this.$store.state.Cart
       }
-    }
+    },
+    mounted() {
+      this.$store.dispatch('displayCart')
+    },
+    methods: {
+      
+    },
 }
 </script>
 <style scoped>
