@@ -375,8 +375,18 @@ export default createStore({
       window.location.reload()
     },
     async deleteItem({commit},cartID){
-      await axios.delete(`${url}/cartID/${cartID}`)
+      await axios.delete(`${url}/cart/${cartID}`)
+    },
+    async clearCart({commit},userID){
+      await axios.delete(`${url}/cart/${userID}`)
+    },
+    async purchaseCart({commit},userID){
+      await axios.delete(`${url}/cart/${userID}`)
+    },
+    async editQuan({commit},quan){
+      await axios.patch(url + '/cart' + quan.cartID,quan)
     }
+
   },
   modules: {
   }
