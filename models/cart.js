@@ -53,4 +53,4 @@ const deleteProd = async(prodID, userID)=>{
         }
     }
 }
-export {getCart,fill,addProd,deleteProd ,displayMyCart ,clearCart}
+export {getCart,fill,addProd,deleteProd ,clearCart}
