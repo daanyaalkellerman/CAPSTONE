@@ -13,7 +13,7 @@
                 <p class="animate__animated animate__zoomInUp animate__slow">{{product.prodDes}}</p> 
                 <div class="row mx-6">
                     <button class="col-6 price animate__animated animate__tada animate__slow">R{{product.price}}</button>
-                    <button class="btn btn-success my-5 buy col-4 animate__animated animate__pulse">addToCart</button>
+                    <button @click="addCart(product)" class="btn btn-success my-5 buy col-4 animate__animated animate__pulse">addToCart</button>
                 </div>
                 </div>
             </div>
@@ -31,7 +31,12 @@ export default {
     },
     created(){
         this.$store.dispatch('getProduct', this.$route.params);
-    }
+    },
+    methods: {
+      addCart(product)  {
+        this.$store.dispatch('addCart', product)
+      }
+    },
 }
 </script>
 <style scoped>
@@ -46,11 +51,12 @@ export default {
 .single{
 
     padding-top: 250px;
+
     /* margin-bottom: 0px; */
 
 }
 .card{
-    width: auto;
+    width: 450px;
 }
 
 .buy{
@@ -96,6 +102,10 @@ p{
     background-color: #5889B0;
     font-size:14px;
 }
+.card{
+    width: 300px;
+}
+
 }
 @media (width:768px) {
     .single{
