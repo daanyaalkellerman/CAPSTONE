@@ -13,7 +13,7 @@ export default {
     },
     prodCart: async (req,res)=>{
         try{
-            res.send(await addProd(+req.params.prodID))
+            res.send(await addProd(+req.params.cartID))
         }catch(e){
             res.status(404).json({
                 status:404,
@@ -28,7 +28,7 @@ export default {
            const [prod] = await getProduct(+req.params.prodID)
            let {userID} = req.query
            await fill(+req.params.prodID, userID, quantity)
-            res.send(await addProd(+req.params.prodID))
+            res.send(await addProd(+req.params.cartID))
         }catch(err){
             res.status(404).json({
                 status:404,
@@ -39,7 +39,7 @@ export default {
     deleteFromCart: async (req,res)=>{
         try{
             let {userID} = req.query
-            await deleteProd(+req.params.prodID,userID)
+            await deleteProd(+req.params.cartID,userID)
             res.send(await getCart())
         }catch(e){
             res.status(404).json({
