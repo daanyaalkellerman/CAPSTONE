@@ -1,9 +1,9 @@
-import { getCarts,displayCart,editQuan,deleteCart,getItem,addProd ,clearCart } from "../models/cart.js";
+import { getCart,deleteProd,addProd ,clearCart } from "../models/cart.js";
 
 export default {
-    displayCart: async (req,res)=>{
+    Cart: async (req,res)=>{
         try{
-            res.send(await displayCart(+req.params.userID))
+            res.send(await getCart())
         }catch(e){
             res.status(404).json({
                 status:404,
@@ -11,9 +11,9 @@ export default {
             })
         }
     },
-    getItem: async (req,res)=>{
+    prodCart: async (req,res)=>{
         try{
-            res.send(await getItem(+req.params.cartID))
+            res.send(await addProd(+req.params.prodID))
         }catch(e){
             res.status(404).json({
                 status:404,
@@ -24,11 +24,11 @@ export default {
     },
     addProd: async (req,res)=>{
         try{
-            const {quantity} = req.body
-            await addProd(quantity)
-            res.send({
-                msg:'New product has been added'
-            })
+            let {quantity} = req.body
+           const [prod] = await getProduct(+req.params.prodID)
+           let {userID} = req.query
+           await fill(+req.params.prodID, userID, quantity)
+            res.send(await addProd(+req.params.prodID))
         }catch(err){
             res.status(404).json({
                 status:404,
@@ -36,23 +36,11 @@ export default {
             })
         }
     },
-    editQuan: async (req,res)=>{
-        try{
-            const quan = await getItem(+req.params.cartID)
-            let {quantity} = req.body
-            quantity ? quantity=quantity:  {quantity} = quan
-            await editQuan(+req.params.body,quantity)
-            res.json(await getCarts())
-        }catch(e){
-            res.status(404).json({
-                status:404,
-                msg: 'Cannot edit cart'
-            })
-        }
-    },
     deleteFromCart: async (req,res)=>{
         try{
-            res.send(await deleteCart(+req.params.cartID))
+            let {userID} = req.query
+            await deleteProd(+req.params.prodID,userID)
+            res.send(await getCart())
         }catch(e){
             res.status(404).json({
                 status:404,

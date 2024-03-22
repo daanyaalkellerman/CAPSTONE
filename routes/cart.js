@@ -5,12 +5,11 @@ import cartControl from '../controller/cart.js'
 const router = express.Router()
 
 router.route('/')
-.get(cartControl.displayCart)
-.post(cartControl.addProd)
+.get(cartControl.Cart)
 
-router.route('/:userID')
-.get(cartControl.getItem)
-.patch(cartControl.editQuan)
+router.route('/:prodID')
+.get(cartControl.prodCart)
+.post(cartControl.addProd)
 .delete(cartControl.deleteFromCart)
 .delete(cartControl.clearCart)
 

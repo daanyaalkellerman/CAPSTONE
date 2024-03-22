@@ -1,50 +1,56 @@
 import {pool} from '../config/config.js'
 
-const getCarts = async(userID)=>{
+const getCart = async()=>{
     const [cart] = await pool.query(`
-    SELECT * FROM Cart WHERE userID = ?
-    `,[userID])
+    SELECT * FROM Cart
+    `)
     return cart
-}
-const getItem = async(cartID)=>{
-    const [item] = await pool.query(`
-    SELECT * FROM Cart WHERE cartID = ?
-    `,[cartID])
-    return item 
-}
-const addProd = async(quantity)=>{
-    const [item] = await pool.query(`
-    INSERT INTO Cart (quantity) VALUES (?)
-    `,[quantity])
-    return item
-}
-const editQuan = async(cartID,quantity)=>{
-    const [quan] = await pool.query(`
-    UPDATE Cart SET quantity = ?  WHERE (cartID = ?)
-    `,[quantity,cartID])
-    return getCarts(quan)
-}
-
-const deleteCart = async(cartID)=>{
-    const [cart] = await pool.query(`
-    DELETE FROM Cart WHERE cartID = ?
-    `,[cartID])
-    return getCarts(cart)
 }
 const clearCart = async(userID)=>{
     const [clear] = await pool.query(`
     DELETE FROM Cart WHERE userID = ?
     `,[userID])
-    return getCarts(clear)
+    return getCart(clear)
 }
-const displayCart = async(userID)=>{
-    const [cart] = await pool.query(`
-    SELECT DISTINCT  prodName, price,prodUrl, category, COUNT(cartID) as quantity
-    FROM Cart
-    INNER JOIN Products ON Cart.prodID = Products.prodID
-    WHERE Cart.userID = ?
-    GROUP BY prodName;
-    `,[userID])
-    return cart
+const addProd = async(prodID, userID)=>{
+    const [item] = await pool.query(`
+    SELECT * FROM Cart WHERE prodID = ? AND userID = ?
+    `,[prodID,userID]);
+    if (item.length > 0){
+        const newQuan = item[0].quantity + 1;
+
+        await pool.query(`
+        UPDATE Cart
+        SET quantity = ?
+        WHERE prodID = ? AND userID = ?
+        `,[newQuan, prodID,userID])
+    }else{
+        await pool.query(`
+        INSERT INTO Cart (prodID,userID,quantity) VALUES (?,?,?)
+        `,[prodID,userID]);
+    }
+
 }
-export {getCarts,getItem,editQuan,deleteCart, addProd ,displayCart ,clearCart}
+const fill = async(prodID,userID) =>{
+    await addCart(prodID,userID)
+}
+const deleteProd = async(prodID, userID)=>{
+    const [item] = await pool.query(`
+    SELECT * FROM Cart WHERE prodID = ? AND userID = ?
+    `,[prodID,userID]);
+    if (item.length > 0){
+        const newQuan = item[0].quantity - 1;
+        if(newQuan <= 0){
+            await pool.query(`
+            DELETE FROM Cart
+            WHERE prodID = ? AND userID = ?
+            `,[prodID,userID])
+        }else{
+
+            await pool.query(`
+            UPDATE Cart SET quantity = ? WHERE prodID = ?, userID = ?
+            `,[newQuan,prodID,userID])
+        }
+    }
+}
+export {getCart,fill,addProd,deleteProd ,displayMyCart ,clearCart}
