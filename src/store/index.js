@@ -1,9 +1,8 @@
 import { createStore } from 'vuex'
 import axios from 'axios'
-import router from '@/router';
 import sweet from 'sweetalert'
-
 // axios.defaults.withCredentials = true
+const thisCart = JSON.parse(localStorage.getItem('cart')) || []
 const url = 'https://drive-nexa.onrender.com';
 
 export default createStore({
@@ -13,7 +12,7 @@ export default createStore({
     Users: [],
     User:[],
     Reviews:[],
-    Cart:[],
+    cart:thisCart,
     setloggedIn:false
   },
   getters: {
@@ -43,8 +42,11 @@ export default createStore({
     setReviews(state, data){
       state.Reviews = data
     },
-    setCart(state,data){
-      state.Cart = data
+    setCart(state,Product){
+      state.cart.push(Product)
+    },
+    delCart(state,ProductIndex){
+      state.cart.splice(ProductIndex,1)
     },
     setLoggedIn(state, data){
       state.loggedIn = data
@@ -67,10 +69,10 @@ export default createStore({
       let res = (await axios.get(`${url}/users`)).data
       commit('setUser',res)
     },
-    deleteUser ({commit},userID){
+  async  deleteUser ({commit},userID){
      try{
        axios.delete(`${url}/users/${userID}`)
-       sweet({
+      await sweet({
          title: 'Success',
          icon:'success',
          text:'User deleted successfuly',
@@ -79,7 +81,7 @@ export default createStore({
        })
        window.location.reload(40000)
      }catch(e){
-       sweet({
+      await sweet({
          title:'Error',
          icon:'error',
          text:'Failed to delete user',
@@ -88,14 +90,14 @@ export default createStore({
    
      }
    },
-    deleteMyUser ({commit},userID){
+   async deleteMyUser ({commit},userID){
      try{
        axios.delete(`${url}/users/${userID}`)
        let cookies = $cookies.keys()
        $cookies.remove('jwt')
        $cookies.remove('user')
        $cookies.remove('userRole')
-       sweet({
+      await sweet({
          title: 'Success',
          icon:'success',
          text:'User deleted successfuly',
@@ -104,7 +106,7 @@ export default createStore({
         })
         window.location.assign('/')
       }catch(e){
-        sweet({
+       await sweet({
          title:'Error',
          icon:'error',
          text:'Failed to delete user',
@@ -117,7 +119,7 @@ export default createStore({
     async createUser ({commit},newUser){
       try{
         let {data} = await axios.post(url + '/users', newUser)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Created User successfully',
@@ -125,7 +127,7 @@ export default createStore({
         })
         window.location.reload()
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Failed to create User',
@@ -138,7 +140,7 @@ export default createStore({
     async editUser ({commit},patch){
       try{
         await axios.patch(url+'/users/' + patch.userID , patch)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Edit was successful',
@@ -146,7 +148,7 @@ export default createStore({
         })
         window.location.reload()
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Failed to edit user',
@@ -175,19 +177,19 @@ export default createStore({
     async createProd({commit}, newProd){
       try{
         let {data} = await axios.post(url + '/products' , newProd)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Product created successfully',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Failed to create product',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }
@@ -195,19 +197,19 @@ export default createStore({
     async editProd({commit}, product){
       try{
         await axios.patch(url+ '/products/'+ product.prodID,product)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Edit was successful',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Failed to edit product',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }
@@ -215,19 +217,19 @@ export default createStore({
     async deleteProd({commit},prodID){
       try{
         axios.delete(`${url}/products/${prodID}`)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Product deleted successfully',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Error when deleting product',
-          timer:50000
+          timer:40000
         })
       }
     },
@@ -245,19 +247,19 @@ export default createStore({
     async signUser ({commit},sign){
       try{
         let {data} = await axios.post(url + '/users', sign)
-        sweet({
+       await sweet({
           title:'Account Created',
-          icon:'Success',
+          icon:'success',
           text:'Signed in successfully',
           timer:40000
         })
           window.location.assign('/login')
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
-          icon:'Error',
+          icon:'error',
           text:'Account exists with that email',
-          timer:50000
+          timer:40000
         })
         window.location.reload()
       }
@@ -268,20 +270,21 @@ export default createStore({
         $cookies.set('jwt',data.tokenSign)
         let [{userRole}] = data.user;
         $cookies.set('userRole', userRole)
+        let [{userID}] = data.user;
+        $cookies.set('userID', userID)
         let [user] = data.user;
         $cookies.set('user',user)
         commit('setLoggedIn',true)
-        sweet({
+       await sweet({
           title:'Login',
           icon:'success',
           text:'Login Successfully',
           timer:40000
         })
         window.location.assign('/home')
-        await router.push('/home')
          
       }catch(err){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Incorrect Details',
@@ -296,16 +299,17 @@ export default createStore({
         let cookies = $cookies.keys()
         $cookies.remove('jwt')
         $cookies.remove('user')
+        $cookies.remove('userID')
         $cookies.remove('userRole')
-        window.location.assign('/login')
-        sweet({
+        await sweet({
           title:'Logout',
           icon: 'success',
           text: 'Logged out successfully',
           timer: 40000
         })
+        window.location.assign('/login')
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Error when logging out',
@@ -329,7 +333,7 @@ export default createStore({
     async addRev({commit}, newRev){
       try{
         let {data} = await axios.post(url + '/reviews', newRev)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Added your review',
@@ -338,7 +342,7 @@ export default createStore({
         window.location.reload('')
       
       }catch(e){
-        sweet({
+       await sweet({
           title:'Error',
           icon:'error',
           text:'Error when adding your review',
@@ -350,7 +354,7 @@ export default createStore({
    async deleteRev({commit},revID){
       try{
         await axios.delete(`${url}/reviews/${revID}`)
-        sweet({
+       await sweet({
           title:'Success',
           icon:'success',
           text:'Deleted review',
@@ -358,7 +362,7 @@ export default createStore({
         })
         window.location.reload(80000)
       }catch(e){
-          sweet({
+         await sweet({
             title:'Error',
             icon:'error',
             text:'Error when deleting review',
@@ -375,27 +379,69 @@ export default createStore({
 
 
 
-   async displayCart({commit}, userID){
-      let car = (await axios.get(`${url}/cart/${userID}`)).data
-      commit('setCart',car)
-    },
-    async addToCart({commit}, addCart){
-      let {data} = await axios.post(url + '/cart', addCart)
+   async addCart(context,prod){
+    try{
+      context.commit('setCart', prod)
+      localStorage.setItem('cart', JSON.stringify(context.state.cart))
+      await sweet({
+        title: 'Success',
+        icon: 'success',
+        text: 'Successfully added',
+        timer: '40000'
+      })
+      window.location.reload()
+    }catch(e){
+    await sweet({
+    title: 'Error',
+    icon: 'error',
+    text: 'Nothing in cart',
+    timer:40000
+    })
+    }
+  },
+    async fetchCart({commit}){
+      const data = await axios.get(url + '/cart');
       window.location.reload()
     },
-    async deleteItem({commit},cartID){
-      await axios.delete(`${url}/cart/${cartID}`)
+    async deleteItem(context,item){
+      try{
+        context.commit('delCart', ProductIndex)
+        sweet({
+          title:'Success',
+          icon:'success',
+          text:'Deleted successfully',
+          timer:40000
+        })
+        window.location.reload()
+      }catch(e){
+        sweet({
+          title:'Error',
+          icon:'error',
+          text:'Error when deleting',
+          timer:40000
+        })
+      }
     },
-    async clearCart({commit},userID){
-      await axios.delete(`${url}/cart/${userID}`)
+    async thisCart(context){
+      const res = await axios.get(`${url}/cart/${$cookies.get('userID')}`);
+      let fullCart = res.data.Products;
+      context.commit('setCart', fullCart) 
     },
-    async purchaseCart({commit},userID){
-      await axios.delete(`${url}/cart/${userID}`)
+    // async purchaseCart({commit},userID){
+    //   await axios.delete(`${url}/cart/${userID}`)
+    // },
+    // async editQuan({commit},quan){
+    //   await axios.patch(url + '/cart' + quan.cartID,quan)
+    // }
+    async purchase(req,res){
+     await sweet({
+        title:'Success',
+        icon:'success',
+        text:'Thank You for purchasing',
+        timer:40000
+      })
+      window.location.reload()
     },
-    async editQuan({commit},quan){
-      await axios.patch(url + '/cart' + quan.cartID,quan)
-    }
-
   },
   modules: {
   }

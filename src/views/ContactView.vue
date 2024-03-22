@@ -104,6 +104,7 @@ h2 {
     text-align: left;
     padding: 20px 0px;
     list-style: none;
+    gap:5px;
     overflow-x: scroll;
     -ms-scroll-snap-type: x mandatory;
     scroll-snap-type: x mandatory;

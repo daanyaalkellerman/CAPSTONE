@@ -18,43 +18,59 @@
                         <th>Delete</th>
                       </tr>
                     </thead>
-                    <tbody v-if="cart">
-                      <tr v-for="prod in $store.state.cart" :key="prod.cartID">
-                        <td data-label="Product">{{prod.prodUrl}}</td>
-                        <td data-label="Product">{{prod.prodName}}</td>
-                        <td data-label="Price">{{prod.price}}</td>
-                        <td data-label="Quantity">{{prod.quantity}}</td>
-                        <td data-label="Delete" ><button @click="deleteUser(prod.cartID)" class="delBtn">Del</button></td>
+                    <tbody>
+                      <tr v-for="(product,index) in cart" :key="product.prodID">
+                        <td data-label="Image">  <img :src="product.prodUrl" alt=""></td>
+                        <td data-label="Product">{{product.prodName}}</td>
+                        <td data-label="Price">R{{product.price}}</td>
+                        <td data-label="Quantity">{{product.quantity}}</td>
+                        <td data-label="Delete" ><button @click="delCart(index)" class="delBtn">Del</button></td>
                       </tr>
-                    </tbody>
-                    <tbody v-else>
-            <SpinnerView/>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
+          <button @click="bought()" class="btn btn-success my-5 buy col animate__animated animate__pulse">PURCHASE</button>
         </section>
     </body>
 </template>
 <script>
 import SpinnerView from '../components/SpinnerView.vue';
 export default {
+
     components:{
         SpinnerView
     },
     computed:{
       cart(){
-        return this.$store.state.Cart
+        return this.$store.state.cart
+      },
+      total(){
+        return this.cart.reduce((total,prod)=>{
+          return total + prod.price
+        }, 0)
       }
-    },
-    mounted() {
-      this.$store.dispatch('displayCart')
+  
     },
     methods: {
-      
-    },
+      delCart(index){
+        this.$store.dispatch('deleteItem',index)
+        localStorage.setItem('cart',JSON.stringify(this.cart))
+      },
+      bought(){
+        this.$store.dispatch('purchase')
+        localStorage.clear()
+      }
+    //   fetchCart(){
+    //     this.$store.dispatch('thisCart')
+    //   }
+    // },
+    // mounted() {
+    //   this.fetchCart()
+    // },
+    }
 }
 </script>
 <style scoped>
@@ -64,6 +80,13 @@ export default {
    color: #D9D9D9;
 }
 
+.buy{
+    padding: 5px;
+    border: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    background-color: #5889B0;
+    font-size:14px;
+}
 .adminNexa{
     min-height: 100vh;
     /* display: grid;  */

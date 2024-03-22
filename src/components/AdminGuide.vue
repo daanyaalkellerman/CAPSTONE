@@ -13,13 +13,13 @@
                 <h4 style="font-style:bold;">Users Functions:</h4>
                 <br>
                 <p>Add: Make sure all fields are filled (make sure to keep user roles lowercase)</p>
-                <p>Edit: Scroll to specific user and use their button to update</p>
+                <p>Edit: Scroll to specific user and use their button to update(NB: you can only edit one per editing)</p>
                 <p>Delete: Tap twice</p>
                 <br >
                 <h4 style="font-style:bold;">Products Functions:</h4>
                 <br>
                 <p>Add: Make sure all fields are filled</p>
-                <p>Edit: Scroll to specific product and use its specific button to update</p>
+                <p>Edit: Scroll to specific product and use its specific button to update (NB: you can only edit one per editing)</p>
                 <p>Delete: Tap twice</p>
                 <p>Thank You for being an Admin :)</p>
                 </form>

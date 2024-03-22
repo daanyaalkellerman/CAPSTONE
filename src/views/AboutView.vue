@@ -42,7 +42,7 @@ export default {
  
   
     text-align: center;
-    border-image: fill 1 linear-gradient(#040B13, rgba(0, 0, 0, 0.067));
+    border-image: fill 1 linear-gradient(#040B13, rgba(0, 0, 0, 0.699));
     
 }
 @media (max-width:380px){

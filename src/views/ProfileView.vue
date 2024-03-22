@@ -11,8 +11,8 @@
                                 <div class="card-text">
                                     <h3 class="my-4">{{user.firstName}} {{user.lastName}}</h3>
                                     <div class="but"> 
-                                    <a @click="deleteMyUser(user.userID)" class="logBut bg-white my-3 p-2 px-5" style="border:1px solid #040B13">Delete </a>
-                                    <a @click="logout" class="logBut bg-white my-3 p-2 px-5"style="border:1px solid #040B13" >Log Out</a>
+                                    <a @click="deleteMyUser(user.userID)" class="logBut bg-white my-3 p-2" style="border:1px solid #040B13">Delete </a>
+                                    <a @click="logout" class="logBut bg-white my-3 p-2"style="border:1px solid #040B13" >Log Out</a>
                                 </div>
                                   
                                 </div>
@@ -46,7 +46,6 @@
    </body>
 </template>
 <script>
-import { loadRouteLocation } from 'vue-router';
 
 export default {
     created(){
@@ -153,7 +152,7 @@ form{
 .logBut{
             text-align: center;
             text-decoration: none;
-            max-width: 100px !important;
+            min-width: 100px !important;
             color: #040B13;
         }
 
@@ -162,6 +161,12 @@ form{
             color: #040B13;
            opacity: 90%;
         }
-
+@media (width:320px) {
+    .logBut{
+        margin: 0px;
+        padding-right:10px;
+        padding-left:10px;
+    }
+}
     
 </style>
